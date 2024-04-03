@@ -14,6 +14,7 @@ export class Eigentuemer {
   id: number | undefined;
 
   @Column('varchar', { unique: true, length: 50 })
+  //name: string
   readonly eigentuemer!: string;
 
   @Column('date')
