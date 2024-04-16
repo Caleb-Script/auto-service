@@ -4,8 +4,8 @@ import { type DataSourceOptions } from 'typeorm';
 //import { nodeConfig } from './node.js';
 import { resolve } from 'node:path';
 import { dbType } from './dbType.js';
-import { Auto } from '../auto/entity/auto.entity.js';
-import { entities } from '../auto/entity/entities.js';
+import { Auto } from 'src/entity/auto.entity.js';
+import { entities } from 'src/entity/entities.js';
 
 const { db } = config;
 
