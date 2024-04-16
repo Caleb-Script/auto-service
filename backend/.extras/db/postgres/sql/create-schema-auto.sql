@@ -1,4 +1,4 @@
--- Copyright (C) 2023 - present Juergen Zimmermann, Hochschule Karlsruhe
+-- Copyright (C) 2022 - present Juergen Zimmermann, Hochschule Karlsruhe
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -13,11 +13,10 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
--- https://www.sqlite.org/lang_dropindex.html
-DROP INDEX IF EXISTS abbildung_buch_id_idx;
-DROP INDEX IF EXISTS buch_isbn_idx;
+-- https://www.postgresql.org/docs/devel/app-psql.html
+-- https://www.postgresql.org/docs/current/ddl-schemas.html
+-- https://www.postgresql.org/docs/current/ddl-schemas.html#DDL-SCHEMAS-CREATE
+-- "user-private schema" (Default-Schema: public)
+CREATE SCHEMA IF NOT EXISTS AUTHORIZATION auto;
 
--- https://www.sqlite.org/lang_droptable.html
-DROP TABLE IF EXISTS abbildung;
-DROP TABLE IF EXISTS titel;
-DROP TABLE IF EXISTS buch;
+ALTER ROLE auto SET search_path = 'auto';
