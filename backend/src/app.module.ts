@@ -11,16 +11,16 @@ import { entities } from './auto/entity/entities';
 import { AutoMutationResolver } from './auto/graphql/auto-Mutation.resolver';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature(entities),
-    GraphQLModule.forRoot<ApolloDriverConfig>(graphQlModuleOptions),
-    TypeOrmModule.forRoot(typeOrmModuleOptions),
-  ],
-  providers: [
-    AutoReadService,
-    AutoWriteService,
-    AutoQueryResolver,
-    AutoMutationResolver,
-  ],
+    imports: [
+        TypeOrmModule.forFeature(entities),
+        GraphQLModule.forRoot<ApolloDriverConfig>(graphQlModuleOptions),
+        TypeOrmModule.forRoot(typeOrmModuleOptions),
+    ],
+    providers: [
+        AutoReadService,
+        AutoWriteService,
+        AutoQueryResolver,
+        AutoMutationResolver,
+    ],
 })
 export class AppModule {}

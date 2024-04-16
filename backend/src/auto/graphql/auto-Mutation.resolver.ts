@@ -1,6 +1,6 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { getLogger } from 'src/logger/logger';
-import { AutoWriteService } from 'src/auto/service/auto-write.service';
+import { getLogger } from 'nodemailer/lib/shared';
+import { AutoWriteService } from '../service/auto-write.service';
 
 export interface CreatePayload {
   readonly id: number;
@@ -10,7 +10,7 @@ export interface UpdatePayload {
   readonly version: number;
 }
 
-export class AutoUpdateDTO extends AutoDTO {
+export class extends AutoDTO {
   readonly id!: number;
   readonly version!: number;
 }
@@ -34,6 +34,10 @@ export class AutoMutationResolver {
     const payload: CreatePayload = { id };
     return payload;
   }
+  
+  #autoDtoToAuto(autoDTO: AutoDTO) {
+    throw new Error('Method not implemented.');
+  }
 
   @Mutation('auto')
   async update(@Args('input') autoUpdateDTO: AutoUpdateDTO) {
@@ -52,9 +56,12 @@ export class AutoMutationResolver {
     const payload: UpdatePayload = { version: versionResult };
     return payload;
   }
+  #autoUpdateDtoToAuto(autoDTO: any) {
+    throw new Error('Method not implemented.');
+  }
 
   @Mutation('auto')
-  async delete(@Args('id') id) {
+  async delete(@Args('id') id : number) {
     this.#logger.debug(`delete: id=${id}`);
 
     const deletePerformed = await this.#service.delete(id);
