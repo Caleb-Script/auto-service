@@ -1,6 +1,6 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { getLogger } from 'src/logger/logger';
-import { AutoWriteService } from 'src/service/auto-write.service';
+import { AutoWriteService } from 'src/auto/service/auto-write.service';
 
 export interface CreatePayload {
   readonly id: number;

@@ -1,8 +1,8 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
-import { Auto } from 'src/entity/auto.entity';
+import { Auto } from 'src/auto/entity/auto.entity';
 import { getLogger } from 'src/logger/logger';
-import { AutoReadService } from 'src/service/auto-read.service';
-import { Suchkriterien } from 'src/service/suchkriterien';
+import { AutoReadService } from 'src/auto/service/auto-read.service';
+import { Suchkriterien } from 'src/auto/service/suchkriterien';
 
 export interface SuchkriterienInput {
   readonly suchkriterien: Suchkriterien;

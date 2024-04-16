@@ -1,4 +1,4 @@
-import { GetriebeType, HerstellerType } from 'src/entity/auto.entity';
+import { GetriebeType, HerstellerType } from 'src/auto/entity/auto.entity';
 
 export interface Suchkriterien {
   readonly modellbezeichnung?: string;
