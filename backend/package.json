@@ -1,8 +1,8 @@
 {
-  "name": "buch",
+  "name": "auto-service",
   "version": "2024.04.0",
   "description": "Beispiel",
-  "author": "Juergen Zimmermann",
+  "author": "Gruppe 2",
   "private": true,
   "license": "GPL-3.0",
   "exports": "./dist/src/main.js",
