@@ -23,7 +23,7 @@
 # D a t e n b a n k
 # ==============================================================================
 
-# "pg-native" erfordert zusaetzlich die lokale Installation von PostgreSQL
+# "pg-native" erfordert die Installation von PostgreSQL: Docker-Image genügt nicht
 # "better-sqlite3" erfordert Python zum Uebersetzen, wenn das Docker-Image gebaut wird
 
 db:
@@ -32,22 +32,24 @@ db:
   #type: oracle
   #type: sqlite
 
-  #host: localhost
+  host: postgres
+  #host: mysql
+  #host: oracle
 
-  #username: auto
+  #username: buch
   #password: p
   #passwordAdmin: p
-  #name: auto
+  #name: buch
   populate: true
 
 # ==============================================================================
 # K e y c l o a k
 # ==============================================================================
 keycloak:
-  #authServerUrl: http://localhost:8080
+  authServerUrl: http://keycloak:8080
   #realm: acme
   # siehe Keycloak Menuepunkt "Clients" > Tab "Clients list" > Spalte "Client ID"
-  #clientId: auto-client
+  #clientId: buch-client
   #tokenValidation: online
 
 # ==============================================================================
@@ -55,8 +57,9 @@ keycloak:
 # ==============================================================================
 log:
   level: debug
-  #dir: ./log
+  dir: /tmp
   pretty: true
+  #default: true
 
 # ==============================================================================
 # H e a l t h
@@ -77,12 +80,13 @@ health:
 # ==============================================================================
 mail:
   #activated: false
-  host: localhost
-  port: 5025
+  host: fakesmtp
+  port: 8025
   log: false
 
 # ==============================================================================
-# T e s t s
+# Authentifizierung
 # ==============================================================================
-#test:
-#  startDbServer: false
+auth:
+  # https://github.com/docker/compose/issues/6741: '' wegen $
+  passwordEncoded: '$argon2i$v=19$m=4096,t=3,p=1$aaxA2v/9rRSPGkwYN+NQog$27Huii1XtD3iEd62fog+04G26LRPZMHoYCI6AGKTL8M'
