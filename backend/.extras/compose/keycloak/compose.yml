@@ -40,7 +40,7 @@ services:
     volumes:
       - type: bind
         # source: C:/Zimmermann/volumes/keycloak
-        source: ../../../../volumes
+        source: ../../../../volumes/keycloak
         # mit Unterverzeichnis h2
         target: /opt/keycloak/data
       - type: bind
@@ -67,3 +67,5 @@ services:
         reservations:
           cpus: '2.0'
           memory: 2G
+
+#eyJhbGciOiJIUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0ZjM4ZTI5NC03NDBhLTQ5MTMtOTg4ZC02ODc3ZjE1OWE1NmYifQ.eyJleHAiOjE3MjE4MDc3MzUsImlhdCI6MTcxNDAzMTczNSwianRpIjoiYTE0Yzc5ODgtZGIyOS00YjI1LWEwYzctMmU5ZGUwYjJjNGUzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9hY21lIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9hY21lIiwidHlwIjoiSW5pdGlhbEFjY2Vzc1Rva2VuIn0.GjCTouaNcyIligvS0Ye0hKGLP7KehkNTSy1SyBogF09FChUq0MfcNECzsH4YUGYC_pcD-PmhdoUQEDPcSBLucQ

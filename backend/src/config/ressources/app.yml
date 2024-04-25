@@ -49,6 +49,7 @@ keycloak:
   # siehe Keycloak Menuepunkt "Clients" > Tab "Clients list" > Spalte "Client ID"
   #clientId: auto-client
   #tokenValidation: online
+  #secret: HuI4q5h2idiWTjdOGtRYrsvz27SNwli5
 
 # ==============================================================================
 # L o g g i n g
