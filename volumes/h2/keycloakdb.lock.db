@@ -1,6 +1,0 @@
-#FileLock
-#Thu Apr 25 09:51:26 CEST 2024
-server=172.22.0.2\:45887
-hostName=keycloak
-method=file
-id=18f143ce6eb3d2b843633fb82bb2c7142e7c6e6f593

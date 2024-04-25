@@ -40,7 +40,7 @@ services:
     volumes:
       - type: bind
         # source: C:/Zimmermann/volumes/keycloak
-        source: ../../../../volumes
+        source: ../../../../volumes/keycloak
         # mit Unterverzeichnis h2
         target: /opt/keycloak/data
       - type: bind
