@@ -7,11 +7,11 @@ import {
     port,
     shutdownServer,
     startServer,
-} from '../testserver.js';
+} from '../testserver';
 import { type GraphQLRequest } from '@apollo/server';
 import { type GraphQLResponseBody } from './auto-query.resolver.test.js';
 import { HttpStatus } from '@nestjs/common';
-import { loginGraphQL } from '../login.js';
+import { loginGraphQL } from '../login';
 
 // eslint-disable-next-line jest/no-export
 export type GraphQLQuery = Pick<GraphQLRequest, 'query'>;
