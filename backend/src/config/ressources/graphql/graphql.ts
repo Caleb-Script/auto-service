@@ -5,7 +5,7 @@ import {
 import { BASEDIR } from '../../app.js';
 import { join } from 'node:path';
 
-const schemaGraphQL = join(BASEDIR, 'config', 'graphql', 'auto.schema.graphql');
+const schemaGraphQL = join(BASEDIR, 'config','ressources', 'graphql', 'auto.schema.graphql');
 console.debug('schemaGraphQL = %s', schemaGraphQL);
 
 /**

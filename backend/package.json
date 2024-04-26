@@ -72,6 +72,7 @@
   ],
   "dependencies": {
     "@apollo/server": "4.10.2",
+    "@apollo/subgraph": "2.7.4",
     "@js-temporal/polyfill": "0.4.4",
     "@nestjs/apollo": "12.1.0",
     "@nestjs/axios": "3.0.2",

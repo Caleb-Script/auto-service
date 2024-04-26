@@ -4,12 +4,12 @@ schema {
 }
 
 type Auto {
-  id: Integer!
-  version: Integer!
+  id: Int!
+  version: Int!
   modellbezeichnung: String!
   hersteller: HerstellerType! 
   fin: String!
-  kilometerstand: Integer
+  kilometerstand: Int
   auslieferungstag: String
   grundpreis: String!
   istAktuellesModell: Boolean!
@@ -21,14 +21,14 @@ type Auto {
 }
 
 type Eigentuemer {
-  id: Integer!
+  id: Int!
   eigentuemer: String!
   geburtsdatum: String!
   fuehrerscheinnummer: String!
 }
 
 type Ausstattung {
-  id: Integer!
+  id: Int!
   bezeichnung: String!
   preis: Float!
   verfuegbar: Boolean!
@@ -47,11 +47,11 @@ enum GetriebeType {
 }
 
 type Query {
-  Autos(suchkriterien: SuchkriterienInput): [Auto!]
-  Auto(id: ID!): Auto
+  autos(suchkriterien: SuchkriterienInput): [Auto!]
+  auto(id: ID!): Auto
 }
 
-input SuchkriterienInputKunde {
+input SuchkriterienInput {
   modellbezeichnung: String
   hersteller: HerstellerType
   getriebeArt: GetriebeType
@@ -64,21 +64,23 @@ type Mutation {
   create(input: AutoInput!): CreatePayload
   update(id: ID!, input: AutoUpdateInput!): UpdatePayload
   delete(id: ID!): Boolean
+  login(username: String!, password: String!): LoginResult
+  refresh(refresh_token: String!): LoginResult
 }
 
 type CreatePayload {
-  id: Integer
+  id: Int
 }
 
 type UpdatePayload {
-  version: Integer
+  version: Int
 }
 
 input AutoInput {
   modellbezeichnung: String!
   hersteller: HerstellerType! 
   fin: String!
-  kilometerstand: Integer
+  kilometerstand: Int
   auslieferungstag: String
   grundpreis: String!
   istAktuellesModell: Boolean!
@@ -91,7 +93,7 @@ input AutoUpdateInput {
   modellbezeichnung: String!
   hersteller: HerstellerType! 
   fin: String!
-  kilometerstand: Integer
+  kilometerstand: Int
   auslieferungstag: String
   grundpreis: String!
   istAktuellesModell: Boolean!
@@ -109,4 +111,12 @@ input AusstattungInput {
   bezeichnung: String!
   preis: Float!
   verfuegbar: Boolean!
+}
+
+type LoginResult {
+  access_token: String!
+  expires_in: Int!
+  refresh_token: String!
+  refresh_expires_in: Int!
+  roles: [String!]
 }
