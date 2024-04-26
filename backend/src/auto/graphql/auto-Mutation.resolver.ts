@@ -1,11 +1,15 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { AutoWriteService } from '../service/auto-write.service';
-import { AutoDTO } from '../rest/autoDTO.entity';
-import { Auto } from '../entity/auto.entity';
-import { Eigentuemer } from '../entity/eigentuemer.entity';
-import { Ausstattung } from '../entity/ausstattung.entity';
-import { getLogger } from '../../logger/logger';
-import { IsNumberString } from 'class-validator';
+import { UseGuards, UseFilters, UseInterceptors } from "@nestjs/common";
+import { Resolver, Mutation, Args } from "@nestjs/graphql";
+import { AuthGuard, Roles } from "nest-keycloak-connect";
+import { ResponseTimeInterceptor } from "../../logger/response-time.interceptor.js";
+import { Ausstattung } from "../entity/ausstattung.entity";
+import { Auto } from "../entity/auto.entity";
+import { Eigentuemer } from "../entity/eigentuemer.entity";
+import { AutoDTO } from '../rest/autoDTO.entity.js';
+import { AutoWriteService } from '../service/auto-write.service.js';
+import { HttpExceptionFilter } from './http-exception.filter.js';
+import { getLogger } from '../../logger/logger.js';
+
 
 export interface CreatePayload {
     readonly id: number;
@@ -15,13 +19,10 @@ export interface UpdatePayload {
     readonly version: number;
 }
 
-export class AutoUpdateDTO extends AutoDTO {
-    @IsNumberString()
-    readonly id!: string;
-    readonly version!: number;
-}
-
 @Resolver()
+@UseGuards(AuthGuard)
+@UseFilters(HttpExceptionFilter)
+@UseInterceptors(ResponseTimeInterceptor)
 export class AutoMutationResolver {
     readonly #service: AutoWriteService;
     readonly #logger = getLogger(AutoMutationResolver.name);
@@ -31,8 +32,9 @@ export class AutoMutationResolver {
     }
 
     @Mutation()
+    @Roles({ roles: ['admin', 'user'] })
     async create(@Args('input') autoDTO: AutoDTO) {
-        this.#logger.debug(`findById: input=${autoDTO}`);
+        this.#logger.debug('findById: input=%o', autoDTO);
 
         const auto = this.#autoDtoToAuto(autoDTO);
         const id = await this.#service.create(auto);
@@ -83,15 +85,19 @@ export class AutoMutationResolver {
     }
 
     @Mutation()
-    async update(@Args('input') autoUpdateDTO: AutoUpdateDTO) {
+    @Roles({ roles: ['admin', 'user'] })
+    async update(
+        @Args('id') id: number,
+        @Args('version') version: string,
+        @Args('input') autoUpdateDTO: AutoDTO,
+    ) {
         this.#logger.debug(
-            `update: id=${autoUpdateDTO.id} aktuelleVersion=${autoUpdateDTO.version}`,
+            `update: id=${id} aktuelleVersion=${version}`,
         );
-
         const auto = this.#autoUpdateDtoToAuto(autoUpdateDTO);
-        const versionStr = `"${autoUpdateDTO.version}"`;
+        const versionStr = `"${version}"`;
         const versionResult = await this.#service.update({
-            id: Number.parseInt(autoUpdateDTO.id, 10),
+            id,
             auto,
             version: versionStr,
         });
@@ -99,7 +105,7 @@ export class AutoMutationResolver {
         const payload: UpdatePayload = { version: versionResult };
         return payload;
     }
-    #autoUpdateDtoToAuto(autoDTO: AutoUpdateDTO): Auto {
+    #autoUpdateDtoToAuto(autoDTO: AutoDTO): Auto {
         return {
             id: undefined,
             version: undefined,
@@ -119,6 +125,7 @@ export class AutoMutationResolver {
     }
 
     @Mutation()
+    @Roles({ roles: ['admin'] })
     async delete(@Args('id') id: number) {
         this.#logger.debug(`delete: id=${id}`);
 
