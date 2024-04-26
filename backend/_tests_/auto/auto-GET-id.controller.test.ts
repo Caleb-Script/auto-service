@@ -26,7 +26,7 @@ import {
     shutdownServer,
     startServer,
 } from '../testserver.js';
-import { type AutoModel } from '../../src/Auto/rest/Auto-get.controller.js';
+import { type AutoModel } from '../../src/auto/rest/auto-get.controller.js';
 import { type ErrorResponse } from './error-response.js';
 import { HttpStatus } from '@nestjs/common';
 
