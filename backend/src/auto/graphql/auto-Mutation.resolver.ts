@@ -30,7 +30,7 @@ export class AutoMutationResolver {
         this.#service = service;
     }
 
-    @Mutation('auto')
+    @Mutation()
     async create(@Args('input') autoDTO: AutoDTO) {
         this.#logger.debug(`findById: input=${autoDTO}`);
 
@@ -82,7 +82,7 @@ export class AutoMutationResolver {
         return auto;
     }
 
-    @Mutation('auto')
+    @Mutation()
     async update(@Args('input') autoUpdateDTO: AutoUpdateDTO) {
         this.#logger.debug(
             `update: id=${autoUpdateDTO.id} aktuelleVersion=${autoUpdateDTO.version}`,
@@ -118,7 +118,7 @@ export class AutoMutationResolver {
         };
     }
 
-    @Mutation('auto')
+    @Mutation()
     async delete(@Args('id') id: number) {
         this.#logger.debug(`delete: id=${id}`);
 
