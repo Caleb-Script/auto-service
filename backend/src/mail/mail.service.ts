@@ -1,51 +1,60 @@
+/*
+ * Copyright (C) 2016 - present Juergen Zimmermann, Hochschule Karlsruhe
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 /**
- * Dieses Modul enthält die Klasse {@linkcode MailService}, welche für
- * das verschicken von E-Mails zuständig ist.
+ * Das Modul besteht aus der Klasse {@linkcode MailService} für das
+ * Verschicken von Emails.
+ * @packageDocumentation
  */
 
 import { Injectable } from '@nestjs/common';
-import { getLogger } from '../logger/logger.js';
-import { eMailConfig } from '../config/mail.js';
 import { type SendMailOptions } from 'nodemailer';
+import { getLogger } from '../logger/logger.js';
+import { mailConfig } from '../config/mail.js';
 
-/**
- * Typdefinition für das Senden einer E-Mail.
- */
-export interface MailParams {
-    /**
-     * Betreff der E-Mail.
-     */
+/** Typdefinition für das Senden einer Email. */
+export interface SendMailParams {
+    /** Subject für die Email. */
     readonly subject: string;
-    /**
-     * Inhalt einer E-Mail.
-     */
+    /** Body für die Email. */
     readonly body: string;
 }
 
-/**
- * Diese Klasse ist zuständig für das verschicken von E-Mails
- */
 @Injectable()
 export class MailService {
     readonly #logger = getLogger(MailService.name);
 
-    async writeMail({ subject, body }: MailParams) {
-        if (!eMailConfig.activated) {
-            this.#logger.warn('writeMail: Mail soll nicht gesendet werden');
+    async sendmail({ subject, body }: SendMailParams) {
+        if (!mailConfig.activated) {
+            this.#logger.warn('#sendmail: Mail deaktiviert');
             return;
         }
-        const from = '"Max Muster" <max.muster@acme.com>';
-        const to = '"Marlene Muster" <marlene.muster@acme.com>';
+
+        const from = '"Joe Doe" <Joe.Doe@acme.com>';
+        const to = '"Foo Bar" <Foo.Bar@acme.com>';
+
         const data: SendMailOptions = { from, to, subject, html: body };
-        this.#logger.debug('writeMail: data=%o', data);
+        this.#logger.debug('#sendMail: data=%o', data);
 
         try {
             const nodemailer = await import('nodemailer');
-            await nodemailer
-                .createTransport(eMailConfig.options)
-                .sendMail(data);
+            await nodemailer.createTransport(mailConfig.options).sendMail(data);
         } catch (err) {
-            this.#logger.warn('writeMail: Fehler %o', err);
+            this.#logger.warn('#sendmail: Fehler %o', err);
         }
     }
 }

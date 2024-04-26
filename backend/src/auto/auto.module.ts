@@ -14,12 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-import { BuchGetController } from './rest/buch-get.controller.js';
-import { BuchMutationResolver } from './graphql/buch-mutation.resolver.js';
-import { BuchQueryResolver } from './graphql/buch-query.resolver.js';
-import { BuchReadService } from './service/buch-read.service.js';
-import { BuchWriteController } from './rest/buch-write.controller.js';
-import { BuchWriteService } from './service/buch-write.service.js';
+import { AutoGetController } from './rest/auto-get.controller.js';
+import { AutoQueryResolver } from './graphql/auto-query.resolver.js';
+import { AutoReadService } from './service/auto-read.service.js';
+import { AutoWriteController } from './rest/auto-write.controller.js';
+import { AutoWriteService } from './service/auto-write.service.js';
 import { KeycloakModule } from '../security/keycloak/keycloak.module.js';
 import { MailModule } from '../mail/mail.module.js';
 import { Module } from '@nestjs/common';
@@ -39,16 +38,15 @@ import { entities } from './entity/entities.js';
  */
 @Module({
     imports: [KeycloakModule, MailModule, TypeOrmModule.forFeature(entities)],
-    controllers: [BuchGetController, BuchWriteController],
+    controllers: [AutoGetController, AutoWriteController],
     // Provider sind z.B. Service-Klassen fuer DI
     providers: [
-        BuchReadService,
-        BuchWriteService,
-        BuchQueryResolver,
-        BuchMutationResolver,
+        AutoReadService,
+        AutoWriteService,
+        AutoQueryResolver,
         QueryBuilder,
     ],
     // Export der Provider fuer DI in anderen Modulen
-    exports: [BuchReadService, BuchWriteService],
+    exports: [AutoReadService, AutoWriteService],
 })
-export class BuchModule {}
+export class AutoModule {}

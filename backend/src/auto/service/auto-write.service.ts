@@ -192,6 +192,6 @@ export class AutoWriteService {
         const eigentuemer = auto.eigentuemer?.eigentuemer ?? 'Unbekannt';
         const body = `Ein Auto mit der fin: ${fin} 
         und dem Eigentümer ${eigentuemer} wurde ${s2}`;
-        await this.#mailService.writeMail({ subject, body });
+        await this.#mailService.sendmail({ subject, body });
     }
 }

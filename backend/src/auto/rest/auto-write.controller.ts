@@ -2,7 +2,6 @@
  * Das Modul besteht aus der Controller-Klasse für Schreiben an der REST-Schnittstelle.
  * @packageDocumentation
  */
-
 import {
     ApiBadRequestResponse,
     ApiBearerAuth,
@@ -15,7 +14,7 @@ import {
     ApiResponse,
     ApiTags,
 } from '@nestjs/swagger';
-import { AutoDTO, AutoDtoOhneRef } from './autoDTO.entity.js';
+import { AuthGuard, Roles } from 'nest-keycloak-connect';
 import {
     Body,
     Controller,
@@ -31,25 +30,24 @@ import {
     UseGuards,
     UseInterceptors,
 } from '@nestjs/common';
+import { AutoDTO, AutoDtoOhneRef } from './autoDTO.entity.js';
 import { Request, Response } from 'express';
 import { type Ausstattung } from '../entity/ausstattung.entity.js';
 import { type Auto } from '../entity/auto.entity.js';
 import { AutoWriteService } from '../service/auto-write.service.js';
 import { type Eigentuemer } from '../entity/eigentuemer.entity.js';
-import { JwtAuthGuard } from '../../security/auth/jwt/jwt-auth.guard.js';
 import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
-import { RolesAllowed } from '../../security/auth/roles/roles-allowed.decorator.js';
-import { RolesGuard } from '../../security/auth/roles/roles.guard.js';
 import { getBaseUri } from './getBaseUri.js';
 import { getLogger } from '../../logger/logger.js';
 import { paths } from '../../config/paths.js';
+
 
 const MSG_FORBIDDEN = 'Kein Token mit ausreichender Berechtigung vorhanden';
 /**
  * Die Controller-Klasse für die Verwaltung von Autos.
  */
 @Controller(paths.rest)
-@UseGuards(JwtAuthGuard, RolesGuard)
+@UseGuards(AuthGuard)
 @UseInterceptors(ResponseTimeInterceptor)
 @ApiTags('Auto REST-API')
 @ApiBearerAuth()
@@ -76,7 +74,7 @@ export class AutoWriteController {
      * @returns Leeres Promise-Objekt.
      */
     @Post()
-    @RolesAllowed('admin', 'verkaeufer')
+    @Roles({ roles: ['admin', 'user'] })
     @ApiOperation({ summary: 'Ein neues Auto anlegen' })
     @ApiCreatedResponse({ description: 'Erfolgreich neu angelegt' })
     @ApiBadRequestResponse({ description: 'Fehlerhafte Autodaten' })
@@ -120,7 +118,7 @@ export class AutoWriteController {
      */
     // eslint-disable-next-line max-params
     @Put(':id')
-    @RolesAllowed('admin', 'verkaeufer')
+    @Roles({ roles: ['admin', 'user'] })
     @HttpCode(HttpStatus.NO_CONTENT)
     @ApiOperation({
         summary: 'Ein vorhandenes Auto aktualisieren',
@@ -178,7 +176,7 @@ export class AutoWriteController {
      * @returns Leeres Promise-Objekt.
      */
     @Delete(':id')
-    @RolesAllowed('admin')
+    @Roles({ roles: ['admin'] })
     @HttpCode(HttpStatus.NO_CONTENT)
     @ApiOperation({ summary: 'Auto mit der ID löschen' })
     @ApiNoContentResponse({

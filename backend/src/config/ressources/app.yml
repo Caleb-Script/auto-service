@@ -16,8 +16,8 @@
 # ==============================================================================
 # N o d e
 # ==============================================================================
-#node:
-#  port: 3000
+node:
+  port: 3000
 
 # ==============================================================================
 # D a t e n b a n k
@@ -27,29 +27,29 @@
 # "better-sqlite3" erfordert Python zum Uebersetzen, wenn das Docker-Image gebaut wird
 
 db:
-  #type: postgres
+  type: postgres
   #type: mysql
   #type: oracle
   #type: sqlite
 
-  #host: localhost
+  host: localhost
 
-  #username: auto
-  #password: p
-  #passwordAdmin: p
-  #name: auto
+  username: auto
+  password: p
+  passwordAdmin: p
+  name: auto
   populate: true
 
 # ==============================================================================
 # K e y c l o a k
 # ==============================================================================
 keycloak:
-  #authServerUrl: http://localhost:8080
-  #realm: acme
+  authServerUrl: http://localhost:8080
+  realm: acme
   # siehe Keycloak Menuepunkt "Clients" > Tab "Clients list" > Spalte "Client ID"
-  #clientId: auto-client
-  #tokenValidation: online
-  #secret: HuI4q5h2idiWTjdOGtRYrsvz27SNwli5
+  clientId: auto-client
+  tokenValidation: online
+  secret: HuI4q5h2idiWTjdOGtRYrsvz27SNwli5
 
 # ==============================================================================
 # L o g g i n g

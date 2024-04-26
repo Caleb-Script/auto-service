@@ -8,7 +8,7 @@ import axios, {
     type AxiosResponse,
     type RawAxiosRequestHeaders,
 } from 'axios';
-import { keycloakConnectOptions, paths } from '../../config/keycloak';
+import { keycloakConnectOptions, paths } from '../../config/keycloak.js';
 import { Injectable } from '@nestjs/common';
 import { getLogger } from '../../logger/logger.js';
 

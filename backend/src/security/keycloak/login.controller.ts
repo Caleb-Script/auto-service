@@ -30,6 +30,7 @@ import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.
 import { getLogger } from '../../logger/logger.js';
 import { paths } from '../../config/paths.js';
 
+
 /** Entity-Klasse für Login-Daten. */
 export class Login {
     /** Benutzername */

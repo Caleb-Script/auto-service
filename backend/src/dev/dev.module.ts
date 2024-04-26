@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2021 - present Juergen Zimmermann, Florian Goebel, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,10 +15,18 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export const paths = {
-    rest: 'rest',
-    auth: 'auth',
-    login: 'login',
-    refresh: 'refresh',
-    swagger: 'swagger',
-} as const;
+import { DbPopulateService } from './db-populate.service.js';
+import { DevController } from './dev.controller.js';
+
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Auto } from '../auto/entity/auto.entity.js';
+import { KeycloakModule } from '../security/keycloak/keycloak.module.js';
+
+@Module({
+    imports: [KeycloakModule, TypeOrmModule.forFeature([Auto])],
+    controllers: [DevController],
+    providers: [DbPopulateService],
+    exports: [DbPopulateService],
+})
+export class DevModule {}
