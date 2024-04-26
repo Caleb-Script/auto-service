@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * Copyright (C) 2021 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -15,10 +16,19 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+=======
+/**
+ * Klasse für die Paths.
+ */
+>>>>>>> 82cf4397f2146fcb3a6a08fcbddfddd19beadde8
 export const paths = {
     rest: 'rest',
     auth: 'auth',
     login: 'login',
+<<<<<<< HEAD
     refresh: 'refresh',
+=======
+    roles: 'roles',
+>>>>>>> 82cf4397f2146fcb3a6a08fcbddfddd19beadde8
     swagger: 'swagger',
 } as const;

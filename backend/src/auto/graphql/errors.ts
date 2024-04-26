@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * Copyright (C) 2023 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -15,6 +16,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+=======
+>>>>>>> 82cf4397f2146fcb3a6a08fcbddfddd19beadde8
 /**
  * Das Modul besteht aus den Klassen für die Fehlerbehandlung bei GraphQL.
  * @packageDocumentation
