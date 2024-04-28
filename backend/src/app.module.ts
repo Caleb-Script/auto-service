@@ -1,5 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { graphQlModuleOptions } from './config/ressources/graphql/graphql.js';
+import { graphQlModuleOptions } from './config/resources/graphql/graphql.js';
 import { typeOrmModuleOptions } from './config/typeormOptions.js';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
