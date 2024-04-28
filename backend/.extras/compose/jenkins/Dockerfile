@@ -17,7 +17,7 @@ FROM jenkins/jenkins:${JENKINS_VERSION}
 USER root
 
 RUN <<EOF
-set -ex
+set -eux
 
 apt-get update --yes
 apt-get upgrade --yes
