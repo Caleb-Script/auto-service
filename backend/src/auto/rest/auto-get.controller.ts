@@ -39,6 +39,7 @@ import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.
 import { getBaseUri } from './getBaseUri.js';
 import { getLogger } from '../../logger/logger.js';
 import { paths } from '../../config/paths.js';
+import { Public } from 'nest-keycloak-connect';
 
 /** href-Link für HATEOS */
 export interface Link {
@@ -158,6 +159,7 @@ export class AutoGetController {
      */
     // eslint-disable-next-line max-params
     @Get(':id')
+    @Public()
     @ApiOperation({ summary: 'Suche mit der Auto-ID' })
     @ApiParam({
         name: 'id',
@@ -225,6 +227,7 @@ export class AutoGetController {
      * @returns Leeres Promise-Obkjet
      */
     @Get()
+    @Public()
     @ApiOperation({ summary: 'Suche mit Suchkriterien' })
     @ApiOkResponse({ description: 'Eine evtl. leere Liste mit Autos' })
     async get(
