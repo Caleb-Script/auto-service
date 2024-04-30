@@ -1,4 +1,4 @@
--- Copyright (C) 2022 - present Juergen Zimmermann, Hochschule Karlsruhe
+-- Copyright (C) 2024 - present Juergen Zimmermann, Hochschule Karlsruhe
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -13,10 +13,10 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
--- docker compose exec mysql sh
--- mysql --user=root --password=p < /sql/log.sql
+-- SELECT sys_context('userenv', 'current_schema') FROM dual;
 
--- https://dev.mysql.com/doc/refman/8.2/en/log-file-maintenance.html
--- /var/lib/mysql/mysql.log
-SET GLOBAL general_log = 'ON';
-SET GLOBAL slow_query_log = 'ON';
+-- https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/CREATE-SCHEMA.html
+-- Schema-Name wird auf den Namen des DB-Users gesetzt
+CREATE SCHEMA AUTHORIZATION auto;
+
+exit

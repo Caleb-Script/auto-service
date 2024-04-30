@@ -75,18 +75,18 @@ Webbrowser `http://localhost:8080` oder `https://localhost:8443` aufgerufen hat:
 
     Menüpunkt "Clients"
         <Create client> anklicken
-        Client ID   buch-client
+        Client ID   auto-client
         <Next>
             "Capability config"
                 Client authentication       On
         <Next>
             Root URL                https://localhost:3000
             Valid redirect URIs     https://localhost:3000
-                                    https://buch:3000
+                                    https://auto:3000
                                     https://oauth.pstmn.io/v1/callback
         <Save>
 
-        buch-client
+        auto-client
             Tab "Roles"
                 <Create Role> anklicken
                 Role name       admin
@@ -102,25 +102,25 @@ Webbrowser `http://localhost:8080` oder `https://localhost:8443` aufgerufen hat:
     # https://www.keycloak.org/docs/latest/server_admin/index.html#assigning-permissions-using-roles-and-groups
     Menüpunkt "Realm roles"
         <Create role> anklicken
-            Role name       buch-admin
+            Role name       auto-admin
             <Save> anklicken
         Breadcrumb "Realm roles" anklicken
-            "buch-admin" anklicken
+            "auto-admin" anklicken
                 Drop-down Menü "Action" (in der rechten oberen Ecke):  "Add associated roles" auswählen
                 "Filter by clients"       auswählen und anklicken
-                "buch-client admin"       Haken setzen
+                "auto-client admin"       Haken setzen
                 <Assign> anklicken
         Breadcrumb "Realm roles" anklicken
         <Create role> anklicken
-            Role name       buch-user
+            Role name       auto-user
             <Save>
         Breadcrumb "Realm roles" anklicken
-            "buch-user" anklicken
+            "auto-user" anklicken
                 Drop-down Menü "Action" (in der rechten oberen Ecke):  "Add associated roles" auswählen
                 "Filter by clients"       auswählen und anklicken
-                "buch-client user"        Haken setzen
+                "auto-client user"        Haken setzen
                 <Assign> anklicken
-            WICHTIG: "buch-admin" und "buch-user" haben in der Spalte "Composite" den Wert "True"
+            WICHTIG: "auto-admin" und "auto-user" haben in der Spalte "Composite" den Wert "True"
 
     Menüpunkt "Users"
         <Add user>
@@ -139,7 +139,7 @@ Webbrowser `http://localhost:8080` oder `https://localhost:8443` aufgerufen hat:
             Tab "Role Mapping"
                 <Assign Role> anklicken
                     "Filter by clients" auswählen
-                        "buch-client admin"     Haken setzen     (ggf. blättern)
+                        "auto-client admin"     Haken setzen     (ggf. blättern)
                         <Assign> anklicken
             Tab "Details"
                 Required user actions       Überprüfen, dass nichts ausgewählt ist
@@ -160,7 +160,7 @@ Webbrowser `http://localhost:8080` oder `https://localhost:8443` aufgerufen hat:
             Tab "Role Mapping"
                 <Assign Role> anklicken
                     "Filter by clients" auswählen
-                        "buch-client user"     Haken setzen     (ggf. blättern)
+                        "auto-client user"     Haken setzen     (ggf. blättern)
                         <Assign> anklicken
             Tab "Details"
                 Required user actions       Überprüfen, dass nichts ausgewählt ist
@@ -175,7 +175,7 @@ Im Wurzelverzeichnis des Projekts in der Datei `.env` muss man die
 Umgebungsvariable `CLIENT_SECRET` auf folgenden Wert aus _Keycloak_ setzen:
 
 - Menüpunkt `Clients`
-- `buch-client` aus der Liste beim voreingestellten Tab `Clients list` auswählen
+- `auto-client` aus der Liste beim voreingestellten Tab `Clients list` auswählen
 - Tab `Credentials` anklicken
 - Die Zeichenkette beim Label `Client Secret` kopieren und in der Datei `.env`
   bei der Umgebungsvariablen `CLIENT_SECRET` als Wert eintragen.
@@ -199,7 +199,7 @@ herunter und speichert sie z.B. im Verzeichnis `.extras\compose\keycloak`.
 Mit dem Kommando `java -jar h2-2.2.224.jar` startet man nun die H2 Console, wobei
 ein Webbrowser gestartet wird. Dort gibt man folgende Werte ein:
 
-- JDBC URL: `jdbc:h2:tcp://localhost/C:/Zimmermann/volumes/keycloak/h2/keycloakdb`
+- JDBC URL: `jdbc:h2:tcp://localhost//Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/keycloak/h2/keycloakdb`
 - Benutzername: `sa`
 - Passwort: `password`
 

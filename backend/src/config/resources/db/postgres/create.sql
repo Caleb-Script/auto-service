@@ -14,12 +14,12 @@
 -- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 -- docker compose exec postgres bash
--- psql --dbname=buch --username=buch --file=/scripts/create-table-buch.sql
+-- psql --dbname=auto --username=auto --file=/scripts/create-table-auto.sql
 
 -- Indexe mit pgAdmin auflisten: "Query Tool" verwenden mit
 --  SELECT   tablename, indexname, indexdef, tablespace
 --  FROM     pg_indexes
---  WHERE    schemaname = 'buch'
+--  WHERE    schemaname = 'auto'
 --  ORDER BY tablename, indexname;
 
 -- https://www.postgresql.org/docs/devel/app-psql.html
@@ -55,6 +55,11 @@ CREATE TABLE IF NOT EXISTS ausstattung (
     auto_id             integer NOT NULL REFERENCES auto
 ) TABLESPACE autospace;
 CREATE INDEX IF NOT EXISTS ausstattung_auto_id_idx ON ausstattung(auto_id) TABLESPACE autospace;
+
+ALTER TABLE
+    ausstattung DROP CONSTRAINT ausstattung_auto_id_fkey,
+ADD
+    CONSTRAINT ausstattung_auto_id_fkey FOREIGN KEY (auto_id) REFERENCES auto(id) ON DELETE CASCADE;
 
 CREATE TABLE IF NOT EXISTS eigentuemer (
     id                  integer GENERATED ALWAYS AS IDENTITY(START WITH 1000) PRIMARY KEY USING INDEX TABLESPACE autospace,

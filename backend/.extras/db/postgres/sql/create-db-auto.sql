@@ -80,4 +80,4 @@ CREATE DATABASE auto;
 GRANT ALL ON DATABASE auto TO auto;
 
 -- https://www.postgresql.org/docs/10/sql-createtablespace.html
-CREATE TABLESPACE autospace OWNER auto LOCATION '/var/lib/postgresql/tablespace/auto';
+CREATE TABLESPACE buchspace OWNER auto LOCATION '/var/lib/postgresql/tablespace/auto';

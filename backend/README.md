@@ -158,16 +158,16 @@ Unterstützung für ESM ist notwendig in:
 
 ### DB-Server
 
-> ❗ Vor dem 1. Start von PostgreSQL muss man die Skripte `create-db-buch.sql`
-> und `create-schema-buch.sql` aus dem Verzeichnis `.extras\db\postgres\sql`
+> ❗ Vor dem 1. Start von PostgreSQL muss man die Skripte `create-db-auto.sql`
+> und `create-schema-auto.sql` aus dem Verzeichnis `.extras\db\postgres\sql`
 > nach `C:\Zimmermann\volumes\postgres\sql` kopieren und die Anleitung ausführen.
 > Danach kopiert man die CSV-Dateien aus dem Verzeichnis `.extras\postgres\csv`
-> nach `C:\Zimmermann\volumes\postgres\csv\buch`.
+> nach `C:\Zimmermann\volumes\postgres\csv\auto`.
 
-> ❗ Vor dem 1. Start von MySQL muss man das Skript `create-db-buch.sql` aus
+> ❗ Vor dem 1. Start von MySQL muss man das Skript `create-db-auto.sql` aus
 > dem Projektverzeichnis `.extras\db\mysql\sql` nach`C:\Zimmermann\volumes\mysql\sql`
 > kopieren und die Anleitung ausführen. Danach kopiert man die CSV-Dateien aus
-> dem Verzeichnis `.extras\db\mysql\csv` nach `C:\Zimmermann\volumes\mysql\csv\buch`.
+> dem Verzeichnis `.extras\db\mysql\csv` nach `C:\Zimmermann\volumes\mysql\csv\auto`.
 
 Vor dem Start des Appservers muss man den DB-Server und ggf. den DB-Browser starten.
 Falls man _PostgreSQL_ oder _MySQL_ und nicht _SQLite_ als "Embedded Database" nutzt:
@@ -195,7 +195,7 @@ Jetzt läuft der DB-Server mit folgender Konfiguration:
 
 - Rechnername `localhost` aus Windows-Sicht
 - Default-Port `5432` bei _PostgreSQL_ bzw. `3306` bei _MySQL_
-- Datenbankname `buch`
+- Datenbankname `auto`
 - Administrations-User `postgres` bei _PostgreSQL_ bzw. `root` bei _MySQL_
 - Passwort `p` für den jeweiligen Administrations-User
 
@@ -259,8 +259,8 @@ verwendet.
 Beim Starten des Appservers wird außerdem mit _TypeORM_ auf die Datenbank
 zugegriffen. Der Benutzername und das Passwort sind in der Datei
 `src\config\db.ts` auf `admin` und `p` voreingestellt. Durch die Property
-`db.populate` in `src\config\resources\buch.yml` wird festgelegt, ob die
-(Test-) DB `buch` neu geladen wird.
+`db.populate` in `src\config\resources\auto.yml` wird festgelegt, ob die
+(Test-) DB `auto` neu geladen wird.
 
 ## OpenAPI
 
@@ -288,7 +288,7 @@ herunterladen und installieren. Die Installation erfolgt dabei im Verzeichnis
 - Den Menüpunkt _Workspaces_ anklicken
 - Im Drop-Down Menü den Button _Create Workspace_ anklicken
 - Danach den Button _Next_ anklicken
-- Im Eingabefeld _Name_ `buch` und im Eingabefeld _Summary_ z.B.
+- Im Eingabefeld _Name_ `auto` und im Eingabefeld _Summary_ z.B.
   `REST- und GraphQL-Requests für den Appserver.`
 - Abschließend den Button _Create_ anklicken.
 
@@ -296,8 +296,8 @@ herunterladen und installieren. Die Installation erfolgt dabei im Verzeichnis
 
 Zunächst legt man ein _Environment_ mit Variablen an. Dazu wählt man am
 linken Rand den Menüpunkt _Environments_, klickt auf den Button `Import`
-und wählt aus dem Verzeichnis `.extras\postman` die Datei `buch.postman_environment.json`
-aus. Jetzt hat man die Umgebung `buch` mit der Variablen `base_url` und dem
+und wählt aus dem Verzeichnis `.extras\postman` die Datei `auto.postman_environment.json`
+aus. Jetzt hat man die Umgebung `auto` mit der Variablen `base_url` und dem
 Wert `https://localhost:3000` angelegt.
 
 ### Collections und Folders
@@ -410,7 +410,7 @@ z.B.:
 
 ```powershell
     npm exec jest --detectOpenHandles --errorOnDeprecated `
-      --forceExit --runTestsByPath '__tests__\buch\buch-GET.controller.test.ts'
+      --forceExit --runTestsByPath '__tests__\auto\auto-GET.controller.test.ts'
 ```
 
 ---
@@ -518,18 +518,18 @@ PowerShell herunterfahren.
 ```powershell
     cd .extras/compose
 
-    # PowerShell fuer buch-Server mit distroless-Image zzgl. DB-Server und Mailserver
+    # PowerShell fuer auto-Server mit distroless-Image zzgl. DB-Server und Mailserver
     docker compose up
 
-    # alternativ: buch-Image mit Debian Bookworm
+    # alternativ: auto-Image mit Debian Bookworm
     docker compose -f compose.yml -f compose.bookworm.yml up
 
-    # alternativ: buch-Image mit Wolfi
+    # alternativ: auto-Image mit Wolfi
     docker compose -f compose.yml -f compose.wolfi.yml up
 
     # Nur zur Fehlersuche: weitere PowerShell für bash (NICHT bei distroless!)
     cd .extras\compose
-    docker compose exec buch bash
+    docker compose exec auto bash
         id
         env
         exit
@@ -540,7 +540,7 @@ PowerShell herunterfahren.
         nslookup postgres
         exit
 
-    # 2. Powershell: buch-Server einschl. DB-Server und Mailserver herunterfahren
+    # 2. Powershell: auto-Server einschl. DB-Server und Mailserver herunterfahren
     cd .extras/compose
     docker compose down
 ```
@@ -672,7 +672,7 @@ _Docker Dashboard_ verwenden.
 
 Von Aquasec gibt es _Trivy_, um Docker-Images auf Sicherheitslücken zu analysieren.
 Trivy gibt es auch als Docker-Image. In `compose.trivy.yml` ist ein
-Service für Trivy so konfiguriert, dass das Image `buch` analysiert wird.
+Service für Trivy so konfiguriert, dass das Image `auto` analysiert wird.
 
 ```powershell
     cd .extras\compose\trivy
@@ -810,7 +810,7 @@ Tipps:
 In Anlehnung an die
 [Guidelines von TypeScript](https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines)
 
-- "Feature Filenames", z.B. buch.service.ts
+- "Feature Filenames", z.B. auto.service.ts
 - Klassennamen mit PascalCase
 - Union-Types (mit Strings) statt Enums
 - Attribute und Funktionen mit camelCase

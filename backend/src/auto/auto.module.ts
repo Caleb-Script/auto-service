@@ -10,8 +10,7 @@ import { Module } from '@nestjs/common';
 import { QueryBuilder } from './service/query-builder.js';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { entities } from './entity/entities.js';
-import { AutoMutationResolver } from './graphql/auto-mutation.resolver.js';
-
+import { AutoMutationResolver } from './graphql/auto-Mutation.resolver.js';
 
 /**
  * Das Modul besteht aus Controller- und Service-Klassen für die Verwaltung von
