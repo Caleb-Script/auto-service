@@ -41,10 +41,7 @@ lerna-debug.log*
 .extras/compose/prometheus-grafana/grafana.db
 
 # Compose
-.extras/compose/**
-.extras/compose/*
 .extras/compose
-.extras/*
 
 # OS
 .DS_Store
