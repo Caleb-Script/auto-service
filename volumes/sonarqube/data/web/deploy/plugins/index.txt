@@ -1,1 +1,0 @@
-javascript,true,sonar-javascript-plugin-10.12.0.25537.jar|f4dcd37d423f128aa73f30f6f066c68b
