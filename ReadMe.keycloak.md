@@ -199,7 +199,7 @@ herunter und speichert sie z.B. im Verzeichnis `.extras\compose\keycloak`.
 Mit dem Kommando `java -jar h2-2.2.224.jar` startet man nun die H2 Console, wobei
 ein Webbrowser gestartet wird. Dort gibt man folgende Werte ein:
 
-- JDBC URL: `jdbc:h2:tcp://localhost/C:/Zimmermann/volumes/keycloak/h2/keycloakdb`
+- JDBC URL: `jdbc:h2:tcp://localhost//Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/keycloak/h2/keycloakdb`
 - Benutzername: `sa`
 - Passwort: `password`
 
