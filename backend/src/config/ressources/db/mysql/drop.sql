@@ -15,6 +15,12 @@
 
 -- https://dev.mysql.com/doc/refman/8.2/en/drop-table.html
 
+<<<<<<< Updated upstream
 DROP TABLE IF EXISTS abbildung;
 DROP TABLE IF EXISTS titel;
 DROP TABLE IF EXISTS buch;
+=======
+DROP TABLE IF EXISTS eigentuemer;
+DROP TABLE IF EXISTS ausstattung;
+DROP TABLE IF EXISTS auto;
+>>>>>>> Stashed changes

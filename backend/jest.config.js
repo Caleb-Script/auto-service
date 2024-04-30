@@ -51,11 +51,15 @@ const jestConfig = {
     },
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     testRegex: '__tests__\\.*\\\\.*test\\.m?ts$',
 =======
     //testRegex: '__tests__\\.*\\\\.*test\\.m?ts$',
     testRegex: '__tests__/.*\\.test\\.m?ts$',
 
+>>>>>>> Stashed changes
+=======
+    testRegex: '__tests__\\.*\\\\.*test\\.m?ts$',
 >>>>>>> Stashed changes
     collectCoverageFrom: ['<rootDir>/src/**/*.*ts'],
     // coverageDirectory: 'coverage',

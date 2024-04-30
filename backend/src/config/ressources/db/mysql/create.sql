@@ -25,6 +25,7 @@
 -- https://dev.mysql.com/blog-archive/mysql-8-0-16-introducing-check-constraint
 -- UNIQUE: impliziter Index als B+ Baum
 
+<<<<<<< Updated upstream
 CREATE TABLE IF NOT EXISTS buch (
     id            INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     version       INT NOT NULL DEFAULT 0,
@@ -59,3 +60,40 @@ CREATE TABLE IF NOT EXISTS abbildung (
     INDEX abbildung_buch_id_idx(buch_id)
 ) TABLESPACE buchspace ROW_FORMAT=COMPACT;
 ALTER TABLE abbildung AUTO_INCREMENT=1000;
+=======
+CREATE TABLE IF NOT EXISTS auto (
+    id                   INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    version              INT NOT NULL DEFAULT 0,
+    modellbezeichnung    CHAR(40) NOT NULL,
+    hersteller           ENUM('VOLKSWAGEN', 'AUDI', 'DAIMLER', 'RENAULT'),
+    fin                  VARCHAR(17) NOT NULL UNIQUE,
+    kilometerstand       INT NOT NULL CHECK (kilometerstand>=0),
+    auslieferungstag     DATE,
+    grundpreis           DECIMAL(8,2) NOT NULL,
+    ist_aktuelles_modell BOOLEAN NOT NULL DEFAULT TRUE,
+    getriebe_art         ENUM('MANUELL', 'AUTOMATIK'),
+    erzeugt              DATETIME NOT NULL DEFAULT (CURRENT_TIMESTAMP),
+    aktualisiert         DATETIME NOT NULL DEFAULT (CURRENT_TIMESTAMP)
+) TABLESPACE autospace ROW_FORMAT=COMPACT;
+ALTER TABLE auto AUTO_INCREMENT=1000;
+
+CREATE TABLE IF NOT EXISTS ausstattung (
+    id                INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    bezeichnung       VARCHAR(32) NOT NULL,
+    preis             DECIMAL(8,2) NOT NULL,
+    verfuegbar        BOOLEAN NOT NULL DEFAULT TRUE,
+    auto_id           INT NOT NULL references auto(id)
+) TABLESPACE autospace ROW_FORMAT=COMPACT;
+ALTER TABLE ausstattung AUTO_INCREMENT=1000;
+
+CREATE TABLE IF NOT EXISTS eigentuemer (
+    id                     INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    eigentuemer            VARCHAR(40) NOT NULL,
+    geburtsdatum           DATE,
+    fuehrerscheinnummer    VARCHAR(16) NOT NULL,
+    auto_id                INT UNIQUE NOT NULL references auto(id),
+
+    INDEX eigentuemer_auto_id_idx(auto_id)
+) TABLESPACE autospace ROW_FORMAT=COMPACT;
+ALTER TABLE eigentuemer AUTO_INCREMENT=1000;
+>>>>>>> Stashed changes

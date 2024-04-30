@@ -4,6 +4,7 @@ schema {
 }
 
 type Auto {
+<<<<<<< Updated upstream
   id: Integer!
   version: Integer!
   modellbezeichnung: String!
@@ -12,6 +13,16 @@ type Auto {
   kilometerstand: Integer
   auslieferungstag: String
   grundpreis: String!
+=======
+  id: Int!
+  version: Int!
+  modellbezeichnung: String!
+  hersteller: HerstellerType! 
+  fin: String!
+  kilometerstand: Int
+  auslieferungstag: String
+  grundpreis: Float!
+>>>>>>> Stashed changes
   istAktuellesModell: Boolean!
   getriebeArt: GetriebeType!
   erzeugt: String!
@@ -21,14 +32,22 @@ type Auto {
 }
 
 type Eigentuemer {
+<<<<<<< Updated upstream
   id: Integer!
+=======
+  id: Int!
+>>>>>>> Stashed changes
   eigentuemer: String!
   geburtsdatum: String!
   fuehrerscheinnummer: String!
 }
 
 type Ausstattung {
+<<<<<<< Updated upstream
   id: Integer!
+=======
+  id: Int!
+>>>>>>> Stashed changes
   bezeichnung: String!
   preis: Float!
   verfuegbar: Boolean!
@@ -47,11 +66,19 @@ enum GetriebeType {
 }
 
 type Query {
+<<<<<<< Updated upstream
   Autos(suchkriterien: SuchkriterienInput): [Auto!]
   Auto(id: ID!): Auto
 }
 
 input SuchkriterienInputKunde {
+=======
+  autos(suchkriterien: SuchkriterienInput): [Auto!]
+  auto(id: ID!): Auto
+}
+
+input SuchkriterienInput {
+>>>>>>> Stashed changes
   modellbezeichnung: String
   hersteller: HerstellerType
   getriebeArt: GetriebeType
@@ -62,6 +89,7 @@ input SuchkriterienInputKunde {
 
 type Mutation {
   create(input: AutoInput!): CreatePayload
+<<<<<<< Updated upstream
   update(id: ID!, input: AutoUpdateInput!): UpdatePayload
   delete(id: ID!): Boolean
 }
@@ -72,15 +100,35 @@ type CreatePayload {
 
 type UpdatePayload {
   version: Integer
+=======
+  update(id: ID!, version: String, input: AutoUpdateInput!): UpdatePayload
+  delete(id: ID!): Boolean
+  login(username: String!, password: String!): LoginResult
+  refresh(refresh_token: String!): LoginResult
+}
+
+type CreatePayload {
+  id: Int
+}
+
+type UpdatePayload {
+  version: Int
+>>>>>>> Stashed changes
 }
 
 input AutoInput {
   modellbezeichnung: String!
   hersteller: HerstellerType! 
   fin: String!
+<<<<<<< Updated upstream
   kilometerstand: Integer
   auslieferungstag: String
   grundpreis: String!
+=======
+  kilometerstand: Int
+  auslieferungstag: String
+  grundpreis: Float!
+>>>>>>> Stashed changes
   istAktuellesModell: Boolean!
   getriebeArt: GetriebeType!
   eigentuemer: EigentuemerInput!
@@ -88,12 +136,22 @@ input AutoInput {
 }
 
 input AutoUpdateInput {
+<<<<<<< Updated upstream
   modellbezeichnung: String!
   hersteller: HerstellerType! 
   fin: String!
   kilometerstand: Integer
   auslieferungstag: String
   grundpreis: String!
+=======
+  version: Int
+  modellbezeichnung: String!
+  hersteller: HerstellerType! 
+  fin: String!
+  kilometerstand: Int
+  auslieferungstag: String
+  grundpreis: Float!
+>>>>>>> Stashed changes
   istAktuellesModell: Boolean!
   getriebeArt: GetriebeType!
   eigentuemer: EigentuemerInput
@@ -110,3 +168,14 @@ input AusstattungInput {
   preis: Float!
   verfuegbar: Boolean!
 }
+<<<<<<< Updated upstream
+=======
+
+type LoginResult {
+  access_token: String!
+  expires_in: Int!
+  refresh_token: String!
+  refresh_expires_in: Int!
+  roles: [String!]
+}
+>>>>>>> Stashed changes

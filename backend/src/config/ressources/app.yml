@@ -16,8 +16,13 @@
 # ==============================================================================
 # N o d e
 # ==============================================================================
+<<<<<<< Updated upstream
 #node:
 #  port: 3000
+=======
+node:
+  port: 3000
+>>>>>>> Stashed changes
 
 # ==============================================================================
 # D a t e n b a n k
@@ -27,28 +32,54 @@
 # "better-sqlite3" erfordert Python zum Uebersetzen, wenn das Docker-Image gebaut wird
 
 db:
+<<<<<<< Updated upstream
   #type: postgres
+=======
+  type: postgres
+>>>>>>> Stashed changes
   #type: mysql
   #type: oracle
   #type: sqlite
 
+<<<<<<< Updated upstream
   #host: localhost
 
   #username: buch
   #password: p
   #passwordAdmin: p
   #name: buch
+=======
+  host: localhost
+
+  username: auto
+  password: p
+  passwordAdmin: p
+  name: auto
+>>>>>>> Stashed changes
   populate: true
 
 # ==============================================================================
 # K e y c l o a k
 # ==============================================================================
 keycloak:
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:backend/src/config/ressources/app.yml
   #authServerUrl: http://localhost:8080
+========
+  authServerUrl: http://keycloak:8080
+>>>>>>>> Stashed changes:backend/.extras/compose/app.yml
   #realm: acme
   # siehe Keycloak Menuepunkt "Clients" > Tab "Clients list" > Spalte "Client ID"
   #clientId: buch-client
   #tokenValidation: online
+=======
+  authServerUrl: http://localhost:8080
+  realm: acme
+  # siehe Keycloak Menuepunkt "Clients" > Tab "Clients list" > Spalte "Client ID"
+  clientId: auto-client
+  tokenValidation: online
+  secret: HuI4q5h2idiWTjdOGtRYrsvz27SNwli5
+>>>>>>> Stashed changes
 
 # ==============================================================================
 # L o g g i n g

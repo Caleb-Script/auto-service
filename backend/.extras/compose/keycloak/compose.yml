@@ -40,7 +40,11 @@ services:
     volumes:
       - type: bind
         # source: C:/Zimmermann/volumes/keycloak
+<<<<<<< Updated upstream
         source: /Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/keycloak
+=======
+        source: ../../../../volumes/keycloak
+>>>>>>> Stashed changes
         # mit Unterverzeichnis h2
         target: /opt/keycloak/data
       - type: bind

@@ -1,8 +1,14 @@
+<<<<<<< Updated upstream
 import { Module } from '@nestjs/common';
 import { AutoReadService } from './auto/service/auto-read.service';
 import { AutoWriteService } from './auto/service/auto-write.service';
 import { graphQlModuleOptions } from './config/ressources/graphql/graphql';
 import { typeOrmModuleOptions } from './config/typeormOptions';
+=======
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { graphQlModuleOptions } from './config/ressources/graphql/graphql.js';
+import { typeOrmModuleOptions } from './config/typeormOptions.js';
+>>>>>>> Stashed changes
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriverConfig } from '@nestjs/apollo';

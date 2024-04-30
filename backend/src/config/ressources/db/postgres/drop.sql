@@ -15,9 +15,17 @@
 
 -- https://www.postgresql.org/docs/current/sql-droptable.html
 
+<<<<<<< Updated upstream
 DROP TABLE IF EXISTS abbildung CASCADE;
 DROP TABLE IF EXISTS titel CASCADE;
 DROP TABLE IF EXISTS buch CASCADE;
 
 -- https://www.postgresql.org/docs/current/sql-droptype.html
 DROP TYPE IF EXISTS buchart;
+=======
+DROP TABLE IF EXISTS ausstattung CASCADE;
+DROP TABLE IF EXISTS eigentuemer CASCADE;
+DROP TABLE IF EXISTS auto CASCADE;
+DROP TYPE IF EXISTS getriebeType;
+DROP TYPE IF EXISTS herstellerType;
+>>>>>>> Stashed changes

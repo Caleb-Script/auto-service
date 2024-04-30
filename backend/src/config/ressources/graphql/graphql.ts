@@ -5,7 +5,11 @@ import {
 import { BASEDIR } from '../../app.js';
 import { join } from 'node:path';
 
+<<<<<<< Updated upstream
 const schemaGraphQL = join(BASEDIR, 'config', 'graphql', 'auto.schema.graphql');
+=======
+const schemaGraphQL = join(BASEDIR, 'config','ressources', 'graphql', 'auto.schema.graphql');
+>>>>>>> Stashed changes
 console.debug('schemaGraphQL = %s', schemaGraphQL);
 
 /**

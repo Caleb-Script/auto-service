@@ -39,11 +39,49 @@ export class AutoMutationResolver {
     throw new Error('Method not implemented.');
   }
 
+<<<<<<< Updated upstream
   @Mutation('auto')
   async update(@Args('input') autoUpdateDTO: AutoUpdateDTO) {
     this.#logger.debug(
       `update: id=${autoUpdateDTO.id} aktuelleVersion=${autoUpdateDTO.version}`,
     );
+=======
+    #autoDtoToAuto(autoDTO: AutoDTO): Auto {
+        const eigentuemerDTO = autoDTO.eigentuemer;
+        const eigentuemer: Eigentuemer = {
+            id: undefined,
+            eigentuemer: eigentuemerDTO.eigentuemer,
+            geburtsdatum: eigentuemerDTO.geburtsdatum,
+            fuehrerscheinnummer: eigentuemerDTO.fuehrerscheinnummer,
+            auto: undefined,
+        };
+        const ausstattungen = autoDTO.ausstattungen?.map((ausstattungDTO) => {
+            const ausstattung: Ausstattung = {
+                id: undefined,
+                bezeichnung: ausstattungDTO.bezeichnung,
+                preis: ausstattungDTO.preis,
+                verfuegbar: ausstattungDTO.verfuegbar,
+                auto: undefined,
+            };
+            return ausstattung;
+        });
+        const auto: Auto = {
+            id: undefined,
+            version: undefined,
+            fin: autoDTO.fin,
+            modellbezeichnung: autoDTO.modellbezeichnung,
+            hersteller: autoDTO.hersteller,
+            kilometerstand: autoDTO.kilometerstand,
+            auslieferungstag: autoDTO.auslieferungstag,
+            grundpreis: autoDTO.grundpreis,
+            istAktuellesModell: autoDTO.istAktuellesModell,
+            getriebeArt: autoDTO.getriebeArt,
+            eigentuemer,
+            ausstattungen,
+            erzeugt: new Date(),
+            aktualisiert: new Date(),
+        };
+>>>>>>> Stashed changes
 
     const auto = this.#autoUpdateDtoToAuto(autoDTO);
     const versionStr = `"${autoDTO.version}"`;
