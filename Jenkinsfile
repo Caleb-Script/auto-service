@@ -1,22 +1,5 @@
 #!groovy
 
-/*
- * Copyright (C) 2020 - present Juergen Zimmermann, Hochschule Karlsruhe
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- */
-
 // https://www.jenkins.io/doc/tutorials/create-a-pipeline-in-blue-ocean/
 
 pipeline {
@@ -30,7 +13,7 @@ pipeline {
             // https://stackoverflow.com/questions/62330354/jenkins-pipeline-alpine-agent-apk-update-error-unable-to-lock-database-permis
             // https://stackoverflow.com/questions/42630894/jenkins-docker-how-to-control-docker-user-when-using-image-inside-command/51986870#51986870
             // https://stackoverflow.com/questions/42743201/npm-install-fails-in-jenkins-pipeline-in-docker
-            args '--publish 3000:3000 --publish 5000:5000'
+            args '--publish 3000:3000 --publish 5001:5000'
             // fuer "apt-get install ..."
             args '--user root:root'
 
