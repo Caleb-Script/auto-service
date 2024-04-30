@@ -29,14 +29,14 @@ import { InjectDataSource } from '@nestjs/typeorm';
 
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
-import { getLogger } from '../logger/logger.js';
-import { dbType } from '../config/db.js';
+import { getLogger } from '../../logger/logger.js';
+import { dbType } from '../db.js';
 import {
     adminDataSourceOptions,
     dbPopulate,
     dbResourcesDir,
     typeOrmModuleOptions,
-} from '../config/typeormOptions.js';
+} from '../typeormOptions.js';
 
 /**
  * Die Test-DB wird im Development-Modus neu geladen, nachdem die Module

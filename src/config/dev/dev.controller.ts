@@ -38,7 +38,7 @@ import {
 } from '@nestjs/common';
 import { DbPopulateService } from './db-populate.service.js';
 import { Response } from 'express';
-import { ResponseTimeInterceptor } from '../logger/response-time.interceptor.js';
+import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
 
 
 /**

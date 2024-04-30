@@ -20,8 +20,8 @@ import { DevController } from './dev.controller.js';
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Auto } from '../auto/entity/auto.entity.js';
-import { KeycloakModule } from '../security/keycloak/keycloak.module.js';
+import { Auto } from '../../auto/entity/auto.entity.js';
+import { KeycloakModule } from '../../security/keycloak/keycloak.module.js';
 
 @Module({
     imports: [KeycloakModule, TypeOrmModule.forFeature([Auto])],

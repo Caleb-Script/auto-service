@@ -10,7 +10,7 @@ import { AutoWriteController } from './auto/rest/auto-write.controller.js';
 import { RequestLoggerMiddleware } from './logger/request-logger.middleware.js';
 import { AdminModule } from './admin/admin.module.js';
 import { AutoModule } from './auto/auto.module.js';
-import { DevModule } from './dev/dev.module.js';
+import { DevModule } from './config/dev/dev.module.js';
 import { LoggerModule } from './logger/logger.module.js';
 import { KeycloakModule } from './security/keycloak/keycloak.module.js';
 
