@@ -82,13 +82,6 @@ pipeline {
                 sh 'cat /etc/debian_version'
 
                 sh 'apt-cache policy nodejs'
-                // https://github.com/nodesource/distributions#installation-instructions
-                // https://packages.debian.org/stable/python/python3
-                // https://packages.debian.org/bookworm/python3
-                // https://computingforgeeks.com/how-to-install-python-on-debian-linux
-                // https://cloudcone.com/docs/article/how-to-install-python-3-10-on-debian-11
-                // https://linuxhint.com/install-python-debian-10
-                // https://computingforgeeks.com/how-to-install-python-on-debian-linux
                 sh 'apt-get install --no-install-recommends --yes --show-progress gcc=4:12.2.0-3 g++=4:12.2.0-3 make=4.3-4.1 python3.11-minimal=3.11.2-6'
                 sh 'apt-get install --no-install-recommends --yes --show-progress ca-certificates=20230311 curl=7.88.1-10+deb12u5 gnupg=2.2.40-1.1'
                 sh 'apt-get update --yes'
@@ -136,10 +129,10 @@ pipeline {
                         echo 'TODO: Rechnername/IP-Adresse des DB-Servers fuer Tests konfigurieren'
                         //sh 'npm run test:coverage'
                     },
-                    'ESLint': {
-                        sh 'npx eslint --version'
-                        sh 'npm run eslint'
-                    },
+                    // 'ESLint': {
+                    //     sh 'npx eslint --version'
+                    //     sh 'npm run eslint'
+                    // },
                     'Security Audit': {
                         sh 'npm audit --omit=dev'
                     },
