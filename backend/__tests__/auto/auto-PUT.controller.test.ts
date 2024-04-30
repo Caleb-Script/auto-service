@@ -8,9 +8,9 @@ import {
   startServer,
 } from '../testserver.js';
 import { type AutoDtoOhneRef } from '../../src/auto/rest/autoDTO.entity.js';
-import { type ErrorResponse } from './error-response.js';
+import { type ErrorResponse } from './error-response';
 import { HttpStatus } from '@nestjs/common';
-import { loginRest } from '../login.js';
+import { loginRest } from '../login';
 
 // -----------------------------------------------------------------------------
 // T e s t d a t e n

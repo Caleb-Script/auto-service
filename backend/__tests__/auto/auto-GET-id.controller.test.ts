@@ -26,8 +26,8 @@ import {
   startServer,
 } from '../testserver.js';
 import { type AutoModel } from '../../src/auto/rest/auto-get.controller.js';
-import { type ErrorResponse } from './error-response.js';
 import { HttpStatus } from '@nestjs/common';
+import { ErrorResponse } from './error-response.js';
 
 // -----------------------------------------------------------------------------
 // T e s t d a t e n

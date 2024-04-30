@@ -1,7 +1,7 @@
 import { type AxiosInstance, type AxiosResponse } from 'axios';
 import { httpsAgent, loginPath } from './testserver.js';
-import { type GraphQLQuery } from './auto/auto-mutation.resolver.test.js';
-import { type GraphQLResponseBody } from './auto/auto-query.resolver.test.js';
+import { GraphQLQuery } from './auto/auto-mutation.resolver.test.js';
+import { GraphQLResponseBody } from './auto/auto-query.resolver.test.js';
 
 interface LoginResult {
   // eslint-disable-next-line @typescript-eslint/naming-convention

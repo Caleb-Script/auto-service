@@ -9,7 +9,7 @@ import {
 } from '../testserver.js';
 import { type AutoDTO } from '../../src/auto/rest/autoDTO.entity.js';
 import { AutoReadService } from '../../src/auto/service/auto-read.service.js';
-import { type ErrorResponse } from './error-response.js';
+import { type ErrorResponse } from './error-response';
 import { HttpStatus } from '@nestjs/common';
 import { loginRest } from '../login.js';
 

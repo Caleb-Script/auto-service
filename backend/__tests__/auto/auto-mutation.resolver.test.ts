@@ -9,9 +9,9 @@ import {
   startServer,
 } from '../testserver';
 import { type GraphQLRequest } from '@apollo/server';
-import { type GraphQLResponseBody } from './auto-query.resolver.test.js';
 import { HttpStatus } from '@nestjs/common';
 import { loginGraphQL } from '../login';
+import { GraphQLResponseBody } from './auto-query.resolver.test';
 
 export type GraphQLQuery = Pick<GraphQLRequest, 'query'>;
 
