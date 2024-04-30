@@ -60,18 +60,12 @@ pipeline {
                 sh 'rm -rf .extras/doc/folien/folien.html'
                 sh 'rm -rf .extras/doc/projekthandbuch/html'
 
-                // https://www.jenkins.io/doc/pipeline/steps/git
-                // "named arguments" statt Funktionsaufruf mit Klammern
                 git url: 'https://github.com/Caleb-Script/auto-service.git', branch: 'main', poll: true
             }
         }
 
         stage('Install') {
             steps {
-                // https://stackoverflow.com/questions/51416409/jenkins-env-node-no-such-file-or-directory
-                // https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions
-                // https://www.debian.org/distrib/packages
-                // https://packages.debian.org/buster/nodejs
                 sh 'id'
                 sh 'cat /etc/passwd'
                 sh 'echo $PATH'
@@ -129,10 +123,10 @@ pipeline {
                         echo 'TODO: Rechnername/IP-Adresse des DB-Servers fuer Tests konfigurieren'
                         //sh 'npm run test:coverage'
                     },
-                    // 'ESLint': {
-                    //     sh 'npx eslint --version'
-                    //     sh 'npm run eslint'
-                    // },
+                    'ESLint': {
+                        sh 'npx eslint --version'
+                        sh 'npm run eslint'
+                    },
                     'Security Audit': {
                         sh 'npm audit --omit=dev'
                     },
