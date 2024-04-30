@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-# Aufruf:   docker build --tag juergenzimmermann/buch:2024.04.0-bookworm .
+# Aufruf:   docker build --tag team2/auto:2024.04.0-bookworm .
 #               ggf. --progress=plain
 #               ggf. --no-cache
 #           Get-Content Dockerfile.bookworm | docker run --rm --interactive hadolint/hadolint:2.12.1-beta-debian
@@ -141,7 +141,7 @@ USER node
 COPY --chown=node:node package.json .env ./
 COPY --from=dependencies --chown=node:node /home/node/node_modules ./node_modules
 COPY --from=dist --chown=node:node /home/node/dist ./dist
-COPY --chown=node:node src/config/resources ./dist/config/resources
+COPY --chown=node:node src/config/ressources ./dist/config/ressources
 
 EXPOSE 3000
 

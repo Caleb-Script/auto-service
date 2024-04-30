@@ -39,7 +39,7 @@ export class AutoMutationResolver {
     throw new Error('Method not implemented.');
   }
 
-<<<<<<< Updated upstream
+
   @Mutation('auto')
   async update(@Args('input') autoUpdateDTO: AutoUpdateDTO) {
     this.#logger.debug(
@@ -77,11 +77,11 @@ export class AutoMutationResolver {
             istAktuellesModell: autoDTO.istAktuellesModell,
             getriebeArt: autoDTO.getriebeArt,
             eigentuemer,
-            ausstattungen,
+            ausstattungen: ausstattungen,
             erzeugt: new Date(),
             aktualisiert: new Date(),
         };
->>>>>>> Stashed changes
+
 
     const auto = this.#autoUpdateDtoToAuto(autoDTO);
     const versionStr = `"${autoDTO.version}"`;

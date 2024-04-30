@@ -174,6 +174,7 @@ export class AutoGetController {
         status: HttpStatus.NOT_MODIFIED,
         description: 'Das Auto wurde bereits heruntergeladen',
     })
+    @Public()
     async getById(
         @Param('id') idStr: string,
         @Req() req: Request,

@@ -4,20 +4,20 @@ import { type DataSourceOptions } from 'typeorm';
 //import { nodeConfig } from './node.js';
 import { resolve } from 'node:path';
 import { dbType } from './dbType.js';
-import { Auto } from '../auto/entity/auto.entity.js';
-import { entities } from '../auto/entity/entities.js';
+import { Kunde } from '../model/kunde.entity.js';
+import { kundenEntities } from '../model/kunden.entities.js';
 
 const { db } = config;
 
 // nullish coalescing
-const database = (db?.name as string | undefined) ?? Auto.name.toLowerCase();
+const database = (db?.name as string | undefined) ?? Kunde.name.toLowerCase();
 
 const host = (db?.host as string | undefined) ?? 'localhost';
 const username =
-  (db?.username as string | undefined) ?? Auto.name.toLowerCase();
+  (db?.username as string | undefined) ?? Kunde.name.toLowerCase();
 const pass = (db?.password as string | undefined) ?? 'p';
 const passAdmin = (db?.passwordAdmin as string | undefined) ?? 'p';
-const schema = (db?.schema as string | undefined) ?? 'auto';
+const schema = (db?.schema as string | undefined) ?? 'kunde_schema';
 
 const namingStrategy = new SnakeNamingStrategy();
 
@@ -35,7 +35,7 @@ switch (dbType) {
       database,
       schema,
       poolSize: 10,
-      entities,
+      entities: kundenEntities,
       namingStrategy,
     };
     break;
@@ -49,7 +49,7 @@ switch (dbType) {
       password: pass,
       database,
       poolSize: 10,
-      entities,
+      entities: kundenEntities,
       namingStrategy,
       supportBigNumbers: true,
       extra: {
@@ -73,7 +73,7 @@ switch (dbType) {
     dataSourceOptions = {
       type: 'better-sqlite3',
       database: sqliteDatabase,
-      entities,
+      entities: kundenEntities,
       namingStrategy,
     };
     break;
