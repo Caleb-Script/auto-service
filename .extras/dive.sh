@@ -22,8 +22,8 @@ base=${1}
 echo -en "\033]1; dive \007"
 
 diveVersion='v0.12.0'
-imagePrefix='juergenzimmermann/'
-imageBase='buch'
+imagePrefix='team2/'
+imageBase='auto'
 imageTag="2024.04.0-$base"
 
 image="$imagePrefix${imageBase}:$imageTag"
