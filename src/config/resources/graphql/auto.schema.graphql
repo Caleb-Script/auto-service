@@ -1,0 +1,123 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Auto {
+  id: Int!
+  version: Int!
+  modellbezeichnung: String!
+  hersteller: HerstellerType! 
+  fin: String!
+  kilometerstand: Int
+  auslieferungstag: String
+  grundpreis: Float!
+  istAktuellesModell: Boolean!
+  getriebeArt: GetriebeType!
+  erzeugt: String!
+  aktualisiert: String!
+  eigentuemer: Eigentuemer
+  ausstattungen: [Ausstattung]
+}
+
+type Eigentuemer {
+  id: Int!
+  eigentuemer: String!
+  geburtsdatum: String!
+  fuehrerscheinnummer: String!
+}
+
+type Ausstattung {
+  id: Int!
+  bezeichnung: String!
+  preis: Float!
+  verfuegbar: Boolean!
+}
+
+enum HerstellerType {
+  VOLKSWAGEN
+  AUDI
+  DAIMLER
+  RENAULT
+}
+
+enum GetriebeType {
+  MANUELL
+  AUTOMATIK
+}
+
+type Query {
+  autos(suchkriterien: SuchkriterienInput): [Auto!]
+  auto(id: ID!): Auto
+}
+
+input SuchkriterienInput {
+  modellbezeichnung: String
+  hersteller: HerstellerType
+  getriebeArt: GetriebeType
+  istAktuellesModell: Boolean
+  eigentuemer: String
+  verfuegbar: Boolean
+}
+
+type Mutation {
+  create(input: AutoInput!): CreatePayload
+  update(id: ID!, version: String, input: AutoUpdateInput!): UpdatePayload
+  delete(id: ID!): Boolean
+  login(username: String!, password: String!): LoginResult
+  refresh(refresh_token: String!): LoginResult
+}
+
+type CreatePayload {
+  id: Int
+}
+
+type UpdatePayload {
+  version: Int
+}
+
+input AutoInput {
+  modellbezeichnung: String!
+  hersteller: HerstellerType! 
+  fin: String!
+  kilometerstand: Int
+  auslieferungstag: String
+  grundpreis: Float!
+  istAktuellesModell: Boolean!
+  getriebeArt: GetriebeType!
+  eigentuemer: EigentuemerInput!
+  ausstattungen: [AusstattungInput]
+}
+
+input AutoUpdateInput {
+  version: Int
+  modellbezeichnung: String!
+  hersteller: HerstellerType! 
+  fin: String!
+  kilometerstand: Int
+  auslieferungstag: String
+  grundpreis: Float!
+  istAktuellesModell: Boolean!
+  getriebeArt: GetriebeType!
+  eigentuemer: EigentuemerInput
+}
+
+input EigentuemerInput {
+  eigentuemer: String!
+  geburtsdatum: String!
+  fuehrerscheinnummer: String!
+}
+
+input AusstattungInput {
+  bezeichnung: String!
+  preis: Float!
+  verfuegbar: Boolean!
+}
+
+type LoginResult {
+  access_token: String!
+  expires_in: Int!
+  refresh_token: String!
+  refresh_expires_in: Int!
+  roles: [String!]
+}
