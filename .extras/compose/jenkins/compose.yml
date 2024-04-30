@@ -48,10 +48,10 @@ services:
         aliases: [docker]
     volumes:
       - type: bind
-        source: C:/Zimmermann/volumes/jenkins/certs
+        source: /Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/jenkins/certs
         target: /certs/client
       - type: bind
-        source: C:/Zimmermann/volumes/jenkins/jenkins_home
+        source: /Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/jenkins/jenkins_home
         target: /var/jenkins_home
     privileged: true
     env_file: docker.env
@@ -78,10 +78,10 @@ services:
     volumes:
       - type: bind
         # /var/jenkins_home/workspace enthaelt das Verzeichnis "auto"
-        source: C:/Zimmermann/volumes/jenkins/jenkins_home
+        source: /Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/jenkins/jenkins_home
         target: /var/jenkins_home
       - type: bind
-        source: C:/Zimmermann/volumes/jenkins/certs
+        source: /Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/jenkins/certs
         target: /certs/client
         read_only: true
     env_file: .env

@@ -17,9 +17,9 @@ import { DataSource } from 'typeorm';
 import { InjectDataSource } from '@nestjs/typeorm';
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
-import { getLogger } from '../logger/logger.js';
-import { dbType } from '../config/db.js';
-import { adminDataSourceOptions, dbPopulate, dbResourcesDir, typeOrmModuleOptions, } from '../config/typeormOptions.js';
+import { getLogger } from '../../logger/logger.js';
+import { dbType } from '../db.js';
+import { adminDataSourceOptions, dbPopulate, dbResourcesDir, typeOrmModuleOptions, } from '../typeormOptions.js';
 let DbPopulateService = DbPopulateService_1 = class DbPopulateService {
     #tabellen = ['auto', 'eigentuemer', 'ausstattung'];
     #datasource;

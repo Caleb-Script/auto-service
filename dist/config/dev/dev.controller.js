@@ -14,7 +14,7 @@ import { ApiBearerAuth, ApiForbiddenResponse, ApiOkResponse, ApiOperation, ApiTa
 import { AuthGuard, Roles } from 'nest-keycloak-connect';
 import { Controller, HttpStatus, Post, Res, UseGuards, UseInterceptors, } from '@nestjs/common';
 import { DbPopulateService } from './db-populate.service.js';
-import { ResponseTimeInterceptor } from '../logger/response-time.interceptor.js';
+import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
 let DevController = class DevController {
     #service;
     constructor(service) {

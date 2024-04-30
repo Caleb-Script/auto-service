@@ -39,8 +39,8 @@ services:
         target: 8443
     volumes:
       - type: bind
-        # source: C:/Zimmermann/volumes/keycloak
-        source: C:/Zimmermann/volumes/keycloak
+        # source: /Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/keycloak
+        source: /Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/keycloak
         # mit Unterverzeichnis h2
         target: /opt/keycloak/data
       - type: bind
