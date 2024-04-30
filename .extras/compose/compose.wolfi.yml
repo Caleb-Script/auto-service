@@ -14,5 +14,5 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 services:
-  buch:
+  auto:
     image: team2/auto:2024.04.0-wolfi
