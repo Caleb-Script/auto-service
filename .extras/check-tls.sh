@@ -1,3 +1,4 @@
+#!/bin/bash
 # Copyright (C) 2024 - present Juergen Zimmermann, Hochschule Karlsruhe
 #
 # This program is free software: you can redistribute it and/or modify
@@ -11,22 +12,11 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-global:
-  # How frequently to scrape ("kratzen") target
-  scrape_interval: 3s
+port="3000"
 
-# https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
-scrape_configs:
-  - job_name: auto
-    scheme: https
-    # https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tls_config
-    tls_config:
-      ca_file: /etc/prometheus/certificate.crt
-      insecure_skip_verify: true
-    metrics_path: /metrics
-    static_configs:
-      - targets: ['host.docker.internal:3000']
-        labels:
-          application: auto
+#hostname=$HOSTNAME
+hostname="localhost"
+
+openssl s_client -connect ${hostname}:$port
