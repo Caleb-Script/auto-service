@@ -79,7 +79,7 @@ pipeline {
 
                 // https://www.jenkins.io/doc/pipeline/steps/git
                 // "named arguments" statt Funktionsaufruf mit Klammern
-                git url: 'https://github.com/Caleb-Script/auto-service/main', branch: 'main', poll: true
+                git url: 'https://github.com/Caleb-Script/auto-service/tree/main', branch: 'main', poll: true
             }
         }
 
