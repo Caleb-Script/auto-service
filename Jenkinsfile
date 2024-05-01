@@ -184,7 +184,7 @@ pipeline {
                         }
                     }
                     // https://www.jenkins.io/doc/pipeline/steps/pipeline-utility-steps/#zip-create-zip-file
-                    zip zipFile: 'auto.zip', archive: false, dir: 'dist'
+                    zip zipFile: 'auto.zip', dir: 'dist', archive: false
                     // jobs/auto/builds/.../archive/auto.zip
                     archiveArtifacts 'auto.zip'
                 }
