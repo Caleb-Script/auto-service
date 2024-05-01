@@ -57,7 +57,8 @@ describe('GET /rest/:id', () => {
         // eslint-disable-next-line no-underscore-dangle
         const selfLink = data._links.self.href;
 
-        expect(selfLink).toMatch(`${url}$`);
+        // eslint-disable-next-line security-node/non-literal-reg-expr
+        expect(selfLink).toMatch(new RegExp(`${url}$`, 'u'));
     });
 
     test('Kein Auto zu nicht-vorhandener ID', async () => {
