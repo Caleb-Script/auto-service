@@ -12,13 +12,13 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var _a;
 var AutoMutationResolver_1;
-import { UseGuards, UseFilters, UseInterceptors } from '@nestjs/common';
-import { Resolver, Mutation, Args } from '@nestjs/graphql';
+import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { AuthGuard, Roles } from 'nest-keycloak-connect';
-import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
+import { UseFilters, UseGuards, UseInterceptors } from '@nestjs/common';
 import { AutoDTO } from '../rest/autoDTO.entity.js';
 import { AutoWriteService } from '../service/auto-write.service.js';
 import { HttpExceptionFilter } from './http-exception.filter.js';
+import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
 import { getLogger } from '../../logger/logger.js';
 let AutoMutationResolver = AutoMutationResolver_1 = class AutoMutationResolver {
     #service;
@@ -32,6 +32,22 @@ let AutoMutationResolver = AutoMutationResolver_1 = class AutoMutationResolver {
         const id = await this.#service.create(auto);
         const payload = { id };
         return payload;
+    }
+    async update(id, version, autoUpdateDTO) {
+        this.#logger.debug(`update: id=${id} aktuelleVersion=${version}`);
+        const auto = this.#autoUpdateDtoToAuto(autoUpdateDTO);
+        const versionStr = `"${version}"`;
+        const versionResult = await this.#service.update({
+            id,
+            auto,
+            version: versionStr,
+        });
+        const payload = { version: versionResult };
+        return payload;
+    }
+    async delete(id) {
+        this.#logger.debug(`delete: id=${id}`);
+        return this.#service.delete(id);
     }
     #autoDtoToAuto(autoDTO) {
         const eigentuemerDTO = autoDTO.eigentuemer;
@@ -71,18 +87,6 @@ let AutoMutationResolver = AutoMutationResolver_1 = class AutoMutationResolver {
         auto.eigentuemer.auto = auto;
         return auto;
     }
-    async update(id, version, autoUpdateDTO) {
-        this.#logger.debug(`update: id=${id} aktuelleVersion=${version}`);
-        const auto = this.#autoUpdateDtoToAuto(autoUpdateDTO);
-        const versionStr = `"${version}"`;
-        const versionResult = await this.#service.update({
-            id,
-            auto,
-            version: versionStr,
-        });
-        const payload = { version: versionResult };
-        return payload;
-    }
     #autoUpdateDtoToAuto(autoDTO) {
         return {
             id: undefined,
@@ -100,11 +104,6 @@ let AutoMutationResolver = AutoMutationResolver_1 = class AutoMutationResolver {
             erzeugt: undefined,
             aktualisiert: new Date(),
         };
-    }
-    async delete(id) {
-        this.#logger.debug(`delete: id=${id}`);
-        const deletePerformed = await this.#service.delete(id);
-        return deletePerformed;
     }
 };
 __decorate([

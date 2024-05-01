@@ -1,1 +1,1 @@
-export declare const dbType: "postgres" | "mysql" | "oracle" | "sqlite";
+export declare const dbType: "postgres" | "mysql" | "sqlite" | "oracle";

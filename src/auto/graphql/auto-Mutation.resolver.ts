@@ -1,13 +1,14 @@
-import { UseGuards, UseFilters, UseInterceptors } from '@nestjs/common';
-import { Resolver, Mutation, Args } from '@nestjs/graphql';
+import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { AuthGuard, Roles } from 'nest-keycloak-connect';
-import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
+import { UseFilters, UseGuards, UseInterceptors } from '@nestjs/common';
+
 import { Ausstattung } from '../entity/ausstattung.entity';
 import { Auto } from '../entity/auto.entity';
-import { Eigentuemer } from '../entity/eigentuemer.entity';
 import { AutoDTO } from '../rest/autoDTO.entity.js';
 import { AutoWriteService } from '../service/auto-write.service.js';
+import { Eigentuemer } from '../entity/eigentuemer.entity';
 import { HttpExceptionFilter } from './http-exception.filter.js';
+import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
 import { getLogger } from '../../logger/logger.js';
 
 export interface CreatePayload {
@@ -40,6 +41,34 @@ export class AutoMutationResolver {
         // TODO BadUserInputError
         const payload: CreatePayload = { id };
         return payload;
+    }
+
+    @Mutation()
+    @Roles({ roles: ['admin', 'user'] })
+    async update(
+        @Args('id') id: number,
+        @Args('version') version: string,
+        @Args('input') autoUpdateDTO: AutoDTO,
+    ) {
+        this.#logger.debug(`update: id=${id} aktuelleVersion=${version}`);
+        const auto = this.#autoUpdateDtoToAuto(autoUpdateDTO);
+        const versionStr = `"${version}"`;
+        const versionResult = await this.#service.update({
+            id,
+            auto,
+            version: versionStr,
+        });
+        // TODO BadUserInputError
+        const payload: UpdatePayload = { version: versionResult };
+        return payload;
+    }
+
+    @Mutation()
+    @Roles({ roles: ['admin'] })
+    async delete(@Args('id') id: number) {
+        this.#logger.debug(`delete: id=${id}`);
+
+        return this.#service.delete(id);
     }
 
     #autoDtoToAuto(autoDTO: AutoDTO): Auto {
@@ -83,25 +112,6 @@ export class AutoMutationResolver {
         return auto;
     }
 
-    @Mutation()
-    @Roles({ roles: ['admin', 'user'] })
-    async update(
-        @Args('id') id: number,
-        @Args('version') version: string,
-        @Args('input') autoUpdateDTO: AutoDTO,
-    ) {
-        this.#logger.debug(`update: id=${id} aktuelleVersion=${version}`);
-        const auto = this.#autoUpdateDtoToAuto(autoUpdateDTO);
-        const versionStr = `"${version}"`;
-        const versionResult = await this.#service.update({
-            id,
-            auto,
-            version: versionStr,
-        });
-        // TODO BadUserInputError
-        const payload: UpdatePayload = { version: versionResult };
-        return payload;
-    }
     #autoUpdateDtoToAuto(autoDTO: AutoDTO): Auto {
         return {
             id: undefined,
@@ -119,14 +129,5 @@ export class AutoMutationResolver {
             erzeugt: undefined,
             aktualisiert: new Date(),
         };
-    }
-
-    @Mutation()
-    @Roles({ roles: ['admin'] })
-    async delete(@Args('id') id: number) {
-        this.#logger.debug(`delete: id=${id}`);
-
-        const deletePerformed = await this.#service.delete(id);
-        return deletePerformed;
     }
 }
