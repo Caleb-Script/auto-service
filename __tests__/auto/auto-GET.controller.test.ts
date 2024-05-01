@@ -1,4 +1,9 @@
 /* eslint-disable no-underscore-dangle */
+import {
+    type AutoModel,
+    type AutosModel,
+    type EigentuemerModel,
+} from '../../src/auto/rest/auto-get.controller.js';
 import { afterAll, beforeAll, describe, test } from '@jest/globals';
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
 import {
@@ -8,11 +13,6 @@ import {
     shutdownServer,
     startServer,
 } from '../testserver.js';
-import {
-    type AutoModel,
-    type AutosModel,
-    type EigentuemerModel,
-} from '../../src/auto/rest/auto-get.controller.js';
 import { type ErrorResponse } from './error-response.js';
 import { HttpStatus } from '@nestjs/common';
 
