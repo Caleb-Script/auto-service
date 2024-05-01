@@ -1,4 +1,3 @@
-
 import { type PrettyOptions } from 'pino-pretty';
 import { config } from './app.js';
 import { env } from './env.js';

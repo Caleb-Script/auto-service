@@ -1,4 +1,3 @@
-
 /**
  * Das Modul enthält die Konfiguration für den Mail-Client mit _nodemailer_.
  * @packageDocumentation

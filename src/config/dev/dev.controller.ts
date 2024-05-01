@@ -40,7 +40,6 @@ import { DbPopulateService } from './db-populate.service.js';
 import { Response } from 'express';
 import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
 
-
 /**
  * Die Controller-Klasse für die Entwicklung, z.B. Neuladen der DB.
  */

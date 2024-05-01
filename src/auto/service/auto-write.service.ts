@@ -22,11 +22,11 @@ import { getLogger } from '../../logger/logger.js';
  * übergeben werden soll.
  */
 export interface UpdateParams {
-    /** ID des zu aktualisierenden Autos.*/
+    /** ID des zu aktualisierenden Autos. */
     readonly id: number | undefined;
-    /** Auto-Objekt mit den aktualisierten Werten.*/
+    /** Auto-Objekt mit den aktualisierten Werten. */
     readonly auto: Auto;
-    /** Versionsnummer für die aktualisierenden Werte.*/
+    /** Versionsnummer für die aktualisierenden Werte. */
     readonly version: string;
 }
 
@@ -67,7 +67,7 @@ export class AutoWriteService {
 
         const autoDb = await this.#repo.save(auto);
         this.#logger.debug('create: autoDb=%o', autoDb);
-        
+
         await this.#writeMail(autoDb, 'neu angelegt', 'neu angelegt');
         return autoDb.id!;
     }
@@ -90,7 +90,9 @@ export class AutoWriteService {
         );
         if (id === undefined) {
             this.#logger.debug('update: ID ist ungueltig');
-            throw new NotFoundException(`Es existiert kein Auto mit ID: ${id}.`);
+            throw new NotFoundException(
+                `Es existiert kein Auto mit ID: ${id}.`,
+            );
         }
 
         const validateResult = await this.#validateUpdate(auto, id, version);
