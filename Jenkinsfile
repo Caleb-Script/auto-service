@@ -185,7 +185,9 @@ pipeline {
     }
     // Das Zip-Archiv wird jetzt erstellt
     dir('dist') {
-        zip zipFile: "${env.WORKSPACE}/auto.zip", archive: false
+        zip "${env.WORKSPACE}/auto.zip"
+was jetzt?!?
+
     }
     // jobs/auto/builds/.../archive/auto.zip
     archiveArtifacts 'auto.zip'
