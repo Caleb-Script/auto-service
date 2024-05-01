@@ -1,0 +1,62 @@
+{
+  "name": "remark-preset-lint-consistent",
+  "version": "6.0.0",
+  "description": "remark preset to configure remark-lint with rules that enforce consistency",
+  "license": "MIT",
+  "keywords": [
+    "consistency",
+    "consistent",
+    "preset",
+    "remark",
+    "remark-lint",
+    "remark-preset"
+  ],
+  "repository": "https://github.com/remarkjs/remark-lint/tree/main/packages/remark-preset-lint-consistent",
+  "bugs": "https://github.com/remarkjs/remark-lint/issues",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/unified"
+  },
+  "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com>"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "exports": "./index.js",
+  "files": [
+    "index.d.ts",
+    "index.d.ts.map",
+    "index.js"
+  ],
+  "dependencies": {
+    "remark-lint": "^10.0.0",
+    "remark-lint-blockquote-indentation": "^4.0.0",
+    "remark-lint-checkbox-character-style": "^5.0.0",
+    "remark-lint-code-block-style": "^4.0.0",
+    "remark-lint-emphasis-marker": "^4.0.0",
+    "remark-lint-fenced-code-marker": "^4.0.0",
+    "remark-lint-heading-style": "^4.0.0",
+    "remark-lint-link-title-style": "^4.0.0",
+    "remark-lint-list-item-content-indent": "^4.0.0",
+    "remark-lint-ordered-list-marker-style": "^4.0.0",
+    "remark-lint-ordered-list-marker-value": "^4.0.0",
+    "remark-lint-rule-style": "^4.0.0",
+    "remark-lint-strong-marker": "^4.0.0",
+    "remark-lint-table-cell-padding": "^5.0.0",
+    "unified": "^11.0.0"
+  },
+  "scripts": {},
+  "typeCoverage": {
+    "atLeast": 100,
+    "detail": true,
+    "ignoreCatch": true,
+    "strict": true
+  },
+  "xo": {
+    "prettier": true,
+    "rules": {
+      "capitalized-comments": "off"
+    }
+  }
+}
