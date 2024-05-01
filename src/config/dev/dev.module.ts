@@ -14,14 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
+import { Auto } from '../../auto/entity/auto.entity.js';
 import { DbPopulateService } from './db-populate.service.js';
 import { DevController } from './dev.controller.js';
-
+import { KeycloakModule } from '../../security/keycloak/keycloak.module.js';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Auto } from '../../auto/entity/auto.entity.js';
-import { KeycloakModule } from '../../security/keycloak/keycloak.module.js';
 
 @Module({
     imports: [KeycloakModule, TypeOrmModule.forFeature([Auto])],

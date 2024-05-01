@@ -1,4 +1,3 @@
-
 /**
  * Das Modul enthält die Konfiguration für _Keycloak_.
  * @packageDocumentation

@@ -278,7 +278,7 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">45x</span>
-<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -297,16 +297,16 @@
  */
 &nbsp;
 import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  OneToMany,
-  OneToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-  VersionColumn,
-} from 'typeorm'; //aus node_modules
-import { ApiProperty } from '@nestjs/swagger'; //aus node_modules
+    Column,
+    CreateDateColumn,
+    Entity,
+    OneToMany,
+    OneToOne,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+    VersionColumn,
+} from 'typeorm';
+import { ApiProperty } from '@nestjs/swagger';
 import { Ausstattung } from './ausstattung.entity.js';
 import { DecimalTransformer } from './decimal-transformer.js';
 import { Eigentuemer } from './eigentuemer.entity.js';
@@ -328,82 +328,82 @@ export type HerstellerType = 'VOLKSWAGEN' | 'AUDI' | 'DAIMLER' | 'RENAULT';
  */
 @Entity()
 export class Auto {
-  @Column('int')
-  @PrimaryGeneratedColumn()
-  id: number | undefined;
+    @Column('int')
+    @PrimaryGeneratedColumn()
+    id: number | undefined;
 &nbsp;
-  @VersionColumn()
-  readonly version: number | undefined;
+    @VersionColumn()
+    readonly version: number | undefined;
 &nbsp;
-  @Column('varchar', { unique: true, length: 40 })
-  @ApiProperty({ example: 'Golf' })
-  readonly modellbezeichnung!: string;
+    @Column('varchar', { unique: true, length: 40 })
+    @ApiProperty({ example: 'Golf' })
+    readonly modellbezeichnung!: string;
 &nbsp;
-  @Column('varchar', { length: 10 })
-  @ApiProperty({ example: 'Audi' })
-  readonly hersteller!: HerstellerType | undefined;
+    @Column('varchar', { length: 10 })
+    @ApiProperty({ example: 'Audi' })
+    readonly hersteller!: HerstellerType | undefined;
 &nbsp;
-  @Column('varchar', { unique: true, length: 17 })
-  @ApiProperty({ example: '1HGCM82633A123456' })
-  readonly fin!: string;
+    @Column('varchar', { unique: true, length: 17 })
+    @ApiProperty({ example: '1HGCM82633A123456' })
+    readonly fin!: string;
 &nbsp;
-  @Column('int')
-  @ApiProperty({ example: 1000, type: Number })
-  readonly kilometerstand: number | undefined;
+    @Column('int')
+    @ApiProperty({ example: 1000, type: Number })
+    readonly kilometerstand: number | undefined;
 &nbsp;
-  @Column('date')
-  @ApiProperty({ example: '2001-01-01' })
-  readonly auslieferungstag: Date | string | undefined;
+    @Column('date')
+    @ApiProperty({ example: '2001-01-01' })
+    readonly auslieferungstag: Date | string | undefined;
 &nbsp;
-  @Column('decimal', {
-    precision: 8,
-    scale: 2,
-    transformer: new DecimalTransformer(),
-  })
-  @ApiProperty({ example: 1, type: Number })
-  readonly grundpreis!: number;
+    @Column('decimal', {
+        precision: 8,
+        scale: 2,
+        transformer: new DecimalTransformer(),
+    })
+    @ApiProperty({ example: 1, type: Number })
+    readonly grundpreis!: number;
 &nbsp;
-  @Column('boolean')
-  @ApiProperty({ example: true, type: Boolean })
-  readonly istAktuellesModell: boolean | undefined;
+    @Column('boolean')
+    @ApiProperty({ example: true, type: Boolean })
+    readonly istAktuellesModell: boolean | undefined;
 &nbsp;
-  @Column('varchar', { length: 9 })
-  @ApiProperty({ example: 'MANUELL', type: String })
-  readonly getriebeArt: GetriebeType | undefined;
+    @Column('varchar', { length: 9 })
+    @ApiProperty({ example: 'MANUELL', type: String })
+    readonly getriebeArt: GetriebeType | undefined;
 &nbsp;
-  @CreateDateColumn({
-    type: 'timestamp',
-  })
-  readonly erzeugt: Date | undefined;
+    @CreateDateColumn({
+        type: 'timestamp',
+    })
+    readonly erzeugt: Date | undefined;
 &nbsp;
-  @UpdateDateColumn({
-    type: 'timestamp',
-  })
-  readonly aktualisiert: Date | undefined;
+    @UpdateDateColumn({
+        type: 'timestamp',
+    })
+    readonly aktualisiert: Date | undefined;
 &nbsp;
-  @OneToOne(() =&gt; Eigentuemer, (eigentuemer) =&gt; eigentuemer.auto, {
-    cascade: ['insert', 'remove'],
-  })
-  readonly eigentuemer: Eigentuemer | undefined;
+    @OneToOne(() =&gt; Eigentuemer, (eigentuemer) =&gt; eigentuemer.auto, {
+        cascade: ['insert', 'remove'],
+    })
+    readonly eigentuemer: Eigentuemer | undefined;
 &nbsp;
-  @OneToMany(() =&gt; Ausstattung, (ausstattung) =&gt; ausstattung.auto, {
-    cascade: ['insert', 'remove'],
-  })
-  readonly ausstattungen: Ausstattung[] | undefined;
+    @OneToMany(() =&gt; Ausstattung, (ausstattung) =&gt; ausstattung.auto, {
+        cascade: ['insert', 'remove'],
+    })
+    readonly ausstattungen: Ausstattung[] | undefined;
 &nbsp;
-  public toString = (): string =&gt;
-    JSON.stringify({
-      id: this.id,
-      version: this.version,
-      modellbezeichnung: this.modellbezeichnung,
-      hersteller: this.hersteller,
-      fin: this.fin,
-      kilometerstand: this.kilometerstand,
-      auslieferungstag: this.auslieferungstag,
-      grundpreis: this.grundpreis,
-      istAktuellesModell: this.istAktuellesModell,
-      getriebeArt: this.getriebeArt,
-    });
+    public toString = (): string =&gt;
+        JSON.stringify({
+            id: this.id,
+            version: this.version,
+            modellbezeichnung: this.modellbezeichnung,
+            hersteller: this.hersteller,
+            fin: this.fin,
+            kilometerstand: this.kilometerstand,
+            auslieferungstag: this.auslieferungstag,
+            grundpreis: this.grundpreis,
+            istAktuellesModell: this.istAktuellesModell,
+            getriebeArt: this.getriebeArt,
+        });
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -412,7 +412,7 @@ export class Auto {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-04-30T09:50:31.897Z
+                at 2024-05-01T09:52:48.634Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

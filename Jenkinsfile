@@ -1,22 +1,5 @@
 #!groovy
 
-/*
- * Copyright (C) 2020 - present Juergen Zimmermann, Hochschule Karlsruhe
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- */
-
 // https://www.jenkins.io/doc/tutorials/create-a-pipeline-in-blue-ocean/
 
 pipeline {
@@ -30,7 +13,7 @@ pipeline {
             // https://stackoverflow.com/questions/62330354/jenkins-pipeline-alpine-agent-apk-update-error-unable-to-lock-database-permis
             // https://stackoverflow.com/questions/42630894/jenkins-docker-how-to-control-docker-user-when-using-image-inside-command/51986870#51986870
             // https://stackoverflow.com/questions/42743201/npm-install-fails-in-jenkins-pipeline-in-docker
-            args '--publish 3000:3000 --publish 5000:5000'
+            args '--publish 3000:3000 --publish 5001:5000'
             // fuer "apt-get install ..."
             args '--user root:root'
 
@@ -77,18 +60,12 @@ pipeline {
                 sh 'rm -rf .extras/doc/folien/folien.html'
                 sh 'rm -rf .extras/doc/projekthandbuch/html'
 
-                // https://www.jenkins.io/doc/pipeline/steps/git
-                // "named arguments" statt Funktionsaufruf mit Klammern
-                git url: 'https://github.com/Caleb-Script/auto-service/main/backend', branch: 'main', poll: true
+                git url: 'https://github.com/Caleb-Script/auto-service.git', branch: 'main', poll: true
             }
         }
 
         stage('Install') {
             steps {
-                // https://stackoverflow.com/questions/51416409/jenkins-env-node-no-such-file-or-directory
-                // https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions
-                // https://www.debian.org/distrib/packages
-                // https://packages.debian.org/buster/nodejs
                 sh 'id'
                 sh 'cat /etc/passwd'
                 sh 'echo $PATH'
@@ -99,13 +76,6 @@ pipeline {
                 sh 'cat /etc/debian_version'
 
                 sh 'apt-cache policy nodejs'
-                // https://github.com/nodesource/distributions#installation-instructions
-                // https://packages.debian.org/stable/python/python3
-                // https://packages.debian.org/bookworm/python3
-                // https://computingforgeeks.com/how-to-install-python-on-debian-linux
-                // https://cloudcone.com/docs/article/how-to-install-python-3-10-on-debian-11
-                // https://linuxhint.com/install-python-debian-10
-                // https://computingforgeeks.com/how-to-install-python-on-debian-linux
                 sh 'apt-get install --no-install-recommends --yes --show-progress gcc=4:12.2.0-3 g++=4:12.2.0-3 make=4.3-4.1 python3.11-minimal=3.11.2-6'
                 sh 'apt-get install --no-install-recommends --yes --show-progress ca-certificates=20230311 curl=7.88.1-10+deb12u5 gnupg=2.2.40-1.1'
                 sh 'apt-get update --yes'
@@ -130,7 +100,7 @@ pipeline {
                 }
 
                 // /var/jenkins_home ist das Homedirectory vom User "jenkins"
-                // /var/jenkins_home/workspace/buch (siehe "pwd" oben)
+                // /var/jenkins_home/workspace/auto (siehe "pwd" oben)
                 sh 'cat package.json'
 
                 // Konfigurationsverzeichnis /root/.npm
@@ -209,14 +179,14 @@ pipeline {
 
                 success {
                     script {
-                        if (fileExists("${env.WORKSPACE}/buch.zip")) {
-                            sh 'rm buch.zip'
+                        if (fileExists("${env.WORKSPACE}/auto.zip")) {
+                            sh 'rm auto.zip'
                         }
                     }
                     // https://www.jenkins.io/doc/pipeline/steps/pipeline-utility-steps/#zip-create-zip-file
-                    zip zipFile: 'buch.zip', archive: false, dir: 'dist'
-                    // jobs/buch/builds/.../archive/buch.zip
-                    archiveArtifacts 'buch.zip'
+                    zip zipFile: 'auto.zip', archive: false, dir: 'dist'
+                    // jobs/auto/builds/.../archive/auto.zip
+                    archiveArtifacts 'auto.zip'
                 }
             }
         }
@@ -224,7 +194,7 @@ pipeline {
         stage('Docker Image bauen') {
             steps {
                 echo 'TODO: Docker-Image bauen und veroeffentlichen'
-                // sh 'docker buildx build --tag juergenzimmermann/buch:2024.04.0 .'
+                // sh 'docker buildx build --tag juergenzimmermann/auto:2024.04.0 .'
             }
         }
 

@@ -22,21 +22,18 @@
  */
 
 import { Injectable, type OnApplicationBootstrap } from '@nestjs/common';
-
-import { DataSource } from 'typeorm';
-import { InjectDataSource } from '@nestjs/typeorm';
-
-
-import path from 'node:path';
-import { readFileSync } from 'node:fs';
-import { getLogger } from '../../logger/logger.js';
-import { dbType } from '../db.js';
 import {
     adminDataSourceOptions,
     dbPopulate,
     dbResourcesDir,
     typeOrmModuleOptions,
 } from '../typeormOptions.js';
+import { DataSource } from 'typeorm';
+import { InjectDataSource } from '@nestjs/typeorm';
+import { dbType } from '../db.js';
+import { getLogger } from '../../logger/logger.js';
+import path from 'node:path';
+import { readFileSync } from 'node:fs';
 
 /**
  * Die Test-DB wird im Development-Modus neu geladen, nachdem die Module
@@ -54,7 +51,6 @@ export class DbPopulateService implements OnApplicationBootstrap {
 
     readonly #logger = getLogger(DbPopulateService.name);
 
-    
     /**
      * Initialisierung durch DI mit `DataSource` für SQL-Queries.
      */
@@ -167,8 +163,6 @@ export class DbPopulateService implements OnApplicationBootstrap {
         const createScript = path.resolve(this.#resourcesDir, 'create.sql');
         this.#logger.debug('createScript = %s', createScript);
         await this.#executeStatements(createScript, true);
-
-       
     }
 
     async #populateSQLite() {
@@ -210,7 +204,5 @@ export class DbPopulateService implements OnApplicationBootstrap {
             await this.#datasource.query(statement);
         }
     }
-
-    
 }
 /* eslint-enable @stylistic/quotes */

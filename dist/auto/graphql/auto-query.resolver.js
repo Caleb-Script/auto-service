@@ -14,11 +14,11 @@ var _a;
 var AutoQueryResolver_1;
 import { Args, Query, Resolver } from '@nestjs/graphql';
 import { AutoReadService, } from '../service/auto-read.service.js';
-import { getLogger } from '../../logger/logger.js';
-import { Public } from 'nest-keycloak-connect';
 import { UseFilters, UseInterceptors } from '@nestjs/common';
-import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
 import { HttpExceptionFilter } from './http-exception.filter.js';
+import { Public } from 'nest-keycloak-connect';
+import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
+import { getLogger } from '../../logger/logger.js';
 let AutoQueryResolver = AutoQueryResolver_1 = class AutoQueryResolver {
     #service;
     #logger = getLogger(AutoQueryResolver_1.name);
@@ -34,9 +34,9 @@ let AutoQueryResolver = AutoQueryResolver_1 = class AutoQueryResolver {
         return auto;
     }
     async getAutos(input) {
-        this.#logger.debug(`getAutos: input=${input}`);
-        const autos = await this.#service.find(input?.suchkriterien);
-        this.#logger.debug(`getAutos: autos=${autos}`, autos);
+        this.#logger.debug(`getAutos: input=${JSON.stringify(input)}`);
+        const autos = await this.#service.find(input.suchkriterien);
+        this.#logger.debug(`getAutos: autos=${JSON.stringify(autos)}`);
         return autos;
     }
 };

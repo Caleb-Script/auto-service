@@ -13,13 +13,13 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a;
 var DbPopulateService_1;
 import { Injectable } from '@nestjs/common';
+import { adminDataSourceOptions, dbPopulate, dbResourcesDir, typeOrmModuleOptions, } from '../typeormOptions.js';
 import { DataSource } from 'typeorm';
 import { InjectDataSource } from '@nestjs/typeorm';
+import { dbType } from '../db.js';
+import { getLogger } from '../../logger/logger.js';
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
-import { getLogger } from '../logger/logger.js';
-import { dbType } from '../config/db.js';
-import { adminDataSourceOptions, dbPopulate, dbResourcesDir, typeOrmModuleOptions, } from '../config/typeormOptions.js';
 let DbPopulateService = DbPopulateService_1 = class DbPopulateService {
     #tabellen = ['auto', 'eigentuemer', 'ausstattung'];
     #datasource;

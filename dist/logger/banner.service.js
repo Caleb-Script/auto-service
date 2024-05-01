@@ -8,11 +8,11 @@ var _a;
 var BannerService_1;
 import { Injectable } from '@nestjs/common';
 import { release, type, userInfo } from 'node:os';
+import { dbType } from '../config/db.js';
 import figlet from 'figlet';
 import { getLogger } from './logger.js';
 import { nodeConfig } from '../config/node.js';
 import process from 'node:process';
-import { dbType } from '../config/db.js';
 let BannerService = BannerService_1 = class BannerService {
     #logger = getLogger(BannerService_1.name);
     onApplicationBootstrap() {

@@ -40,6 +40,9 @@ lerna-debug.log*
 .extras/compose/prometheus-grafana/prometheus-data/*
 .extras/compose/prometheus-grafana/grafana.db
 
+# Compose
+.extras/compose
+
 # OS
 .DS_Store
 Thumbs.db
@@ -48,7 +51,7 @@ Thumbs.db
 coverage
 .nyc_output
 .clinic
-__tests__/buch/__snapshots__
+__tests__/auto/__snapshots__
 
 # Snyk
 .snyk

@@ -24,8 +24,7 @@ import { snakeCase } from 'typeorm/util/StringUtils.js';
 
 export class SnakeNamingStrategy
     extends DefaultNamingStrategy
-    implements NamingStrategyInterface
-{
+    implements NamingStrategyInterface {
     override tableName(
         // eslint-disable-next-line unicorn/no-keyword-prefix
         className: string,

@@ -29,16 +29,13 @@ services:
         target: 9092
     volumes:
       - type: bind
-        # source: C:/Zimmermann/volumes/sonarqube/data
-        source: C:/Zimmermann/volumes/sonarqube/data
+        source: /Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/sonarqube/data
         target: /opt/sonarqube/data
       - type: bind
-        # source: C:/Zimmermann/volumes/sonarqube/logs
-        source: C:/Zimmermann/volumes/sonarqube/data/logs
+        source: /Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/sonarqube/data/logs
         target: /opt/sonarqube/logs
       - type: bind
-        # source: C:/Zimmermann/volumes/sonarqube/extensions
-        source: C:/Zimmermann/volumes/sonarqube/extensions
+        source: /Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/sonarqube/extensions
         target: /opt/sonarqube/lib/extensions
         read_only: true
     env_file: .env

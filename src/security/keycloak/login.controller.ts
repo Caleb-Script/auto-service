@@ -1,4 +1,3 @@
-
 /**
  * Das Modul besteht aus der Controller-Klasse für die Authentifizierung an der
  * REST-Schnittstelle.
@@ -29,7 +28,6 @@ import { Response } from 'express';
 import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
 import { getLogger } from '../../logger/logger.js';
 import { paths } from '../../config/paths.js';
-
 
 /** Entity-Klasse für Login-Daten. */
 export class Login {

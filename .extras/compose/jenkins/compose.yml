@@ -38,7 +38,7 @@ services:
     ports:
       - published: 3000
         target: 3000
-      - published: 5000
+      - published: 5001
         target: 5000
       - published: 2376
         target: 2376

@@ -30,6 +30,7 @@ import {
     UseGuards,
     UseInterceptors,
 } from '@nestjs/common';
+// eslint-disable-next-line sort-imports
 import { AutoDTO, AutoDtoOhneRef } from './autoDTO.entity.js';
 import { Request, Response } from 'express';
 import { type Ausstattung } from '../entity/ausstattung.entity.js';
@@ -40,7 +41,6 @@ import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.
 import { getBaseUri } from './getBaseUri.js';
 import { getLogger } from '../../logger/logger.js';
 import { paths } from '../../config/paths.js';
-
 
 const MSG_FORBIDDEN = 'Kein Token mit ausreichender Berechtigung vorhanden';
 /**

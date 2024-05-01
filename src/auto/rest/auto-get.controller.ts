@@ -39,6 +39,7 @@ import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.
 import { getBaseUri } from './getBaseUri.js';
 import { getLogger } from '../../logger/logger.js';
 import { paths } from '../../config/paths.js';
+// eslint-disable-next-line sort-imports
 import { Public } from 'nest-keycloak-connect';
 
 /** href-Link für HATEOS */
@@ -269,7 +270,6 @@ export class AutoGetController {
 
         this.#logger.debug('#toModel: auto=%o, links=%o', auto, links);
         const eigentuemerModel: EigentuemerModel = {
-            /* eslint-disable unicorn/consistent-destructuring */
             eigentuemer: auto.eigentuemer?.eigentuemer ?? 'N/A',
             fuehrerscheinnummer: auto.eigentuemer?.fuehrerscheinnummer ?? 'N/A',
             geburtsdatum: auto.eigentuemer?.geburtsdatum ?? 'N/A',
@@ -287,7 +287,6 @@ export class AutoGetController {
             eigentuemer: eigentuemerModel,
             _links: links,
         };
-        /* eslint-enable unicorn/consistent-destructuring */
         return autoModel;
     }
 }
