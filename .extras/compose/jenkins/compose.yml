@@ -36,8 +36,8 @@ services:
     image: docker:26.0.0-dind
     restart: always
     ports:
-      - published: 3000
-        target: 3000
+      - published: 3002
+        target: 3002
       - published: 5001
         target: 5000
       - published: 2376
