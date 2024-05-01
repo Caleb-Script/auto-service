@@ -52,7 +52,7 @@ export class QueryBuilder {
     buildId({ id, mitAusstattung = false }: BuildIdParams) {
         // QueryBuilder "auto" fuer Repository<Auto>
         const queryBuilder = this.#repo.createQueryBuilder(this.#autoAlias);
-        
+
         queryBuilder.innerJoinAndSelect(
             `${this.#autoAlias}.eigentuemer`,
             this.#eigentuemerAlias,

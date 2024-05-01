@@ -52,7 +52,9 @@ let AutoReadService = class AutoReadService {
         if (!this.#checkKeys(keys)) {
             throw new NotFoundException('Ungueltige Suchkriterien');
         }
-        const autos = await this.#queryBuilder.build(suchkriterien).getMany();
+        const autos = await this.#queryBuilder
+            .build(suchkriterien)
+            .getMany();
         if (autos.length === 0) {
             this.#logger.debug('find: Keine Autos gefunden');
             throw new NotFoundException(`Keine Autos gefunden:  ${JSON.stringify(suchkriterien)}`);

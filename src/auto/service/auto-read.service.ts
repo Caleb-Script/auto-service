@@ -64,7 +64,7 @@ export class AutoReadService {
      * @returns Das gefundene Auto
      * @throws NotFoundException falls kein Auto mit der gesuchten ID gefunden wird
      */
-    async findById({id, mitAusstattung = false }: FindByIdParams){
+    async findById({ id, mitAusstattung = false }: FindByIdParams) {
         this.#logger.debug('findById: id=%d', id);
 
         const auto: Auto | null = await this.#queryBuilder
@@ -111,7 +111,9 @@ export class AutoReadService {
             throw new NotFoundException('Ungueltige Suchkriterien');
         }
 
-        const autos: Auto[] = await this.#queryBuilder.build(suchkriterien).getMany();
+        const autos: Auto[] = await this.#queryBuilder
+            .build(suchkriterien)
+            .getMany();
         if (autos.length === 0) {
             this.#logger.debug('find: Keine Autos gefunden');
             throw new NotFoundException(
