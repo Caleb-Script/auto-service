@@ -79,3 +79,4 @@ snyk-*.log
 !.vscode/extensions.json
 /dist
 /log
+log/server.log
