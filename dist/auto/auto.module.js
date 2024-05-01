@@ -5,6 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { AutoGetController } from './rest/auto-get.controller.js';
+import { AutoMutationResolver } from './graphql/auto-Mutation.resolver.js';
 import { AutoQueryResolver } from './graphql/auto-query.resolver.js';
 import { AutoReadService } from './service/auto-read.service.js';
 import { AutoWriteController } from './rest/auto-write.controller.js';
@@ -15,7 +16,6 @@ import { Module } from '@nestjs/common';
 import { QueryBuilder } from './service/query-builder.js';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { entities } from './entity/entities.js';
-import { AutoMutationResolver } from './graphql/auto-Mutation.resolver.js';
 let AutoModule = class AutoModule {
 };
 AutoModule = __decorate([
