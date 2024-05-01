@@ -178,20 +178,16 @@ pipeline {
                 }
 
                 success {
-    script {
-        if (fileExists("${env.WORKSPACE}/auto.zip")) {
-            sh 'rm auto.zip'
-        }
-    }
-    // Das Zip-Archiv wird jetzt erstellt
-    dir('dist') {
-        zip "${env.WORKSPACE}/auto.zip"
-was jetzt?!?
-
-    }
-    // jobs/auto/builds/.../archive/auto.zip
-    archiveArtifacts 'auto.zip'
-}
+                    script {
+                        if (fileExists("${env.WORKSPACE}/auto.zip")) {
+                            sh 'rm auto.zip'
+                        }
+                    }
+                    // https://www.jenkins.io/doc/pipeline/steps/pipeline-utility-steps/#zip-create-zip-file
+                    zip zipFile: 'auto.zip', archive: false, dir: 'dist'
+                    // jobs/auto/builds/.../archive/auto.zip
+                    archiveArtifacts 'auto.zip'
+                }
             }
         }
 
