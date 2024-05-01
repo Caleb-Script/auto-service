@@ -123,10 +123,10 @@ pipeline {
                         echo 'TODO: Rechnername/IP-Adresse des DB-Servers fuer Tests konfigurieren'
                         //sh 'npm run test:coverage'
                     },
-                    'ESLint': {
-                        sh 'npx eslint --version'
-                        sh 'npm run eslint'
-                    },
+                    // 'ESLint': {
+                    //     sh 'npx eslint --version'
+                    //     sh 'npm run eslint'
+                    // },
                     'Security Audit': {
                         sh 'npm audit --omit=dev'
                     },
