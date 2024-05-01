@@ -21,7 +21,7 @@ services:
     command: [image, team2/auto:2024.04.0-bookworm]
     volumes:
       - type: bind
-        source: /Users/gentlebookpro/Projekte/SWE/Zimmermann/volumes/trivy
+        source: C:/Zimmermann/volumes/trivy
         target: /root/.cache
       - type: bind
         source: /var/run/docker.sock
