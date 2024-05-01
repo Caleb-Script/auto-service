@@ -36,13 +36,13 @@ export class AutoQueryResolver {
 
         const auto: Auto = await this.#service.findById({ id });
 
-         if (this.#logger.isLevelEnabled('debug')) {
-             this.#logger.debug(
-                 'findById: auto=%s, eigentuemer=%o',
-                 auto.toString(),
-                 auto.eigentuemer,
-             );
-         }
+        if (this.#logger.isLevelEnabled('debug')) {
+            this.#logger.debug(
+                'findById: auto=%s, eigentuemer=%o',
+                auto.toString(),
+                auto.eigentuemer,
+            );
+        }
 
         return auto;
     }

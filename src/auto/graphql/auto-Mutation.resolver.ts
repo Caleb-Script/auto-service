@@ -1,15 +1,14 @@
-import { UseGuards, UseFilters, UseInterceptors } from "@nestjs/common";
-import { Resolver, Mutation, Args } from "@nestjs/graphql";
-import { AuthGuard, Roles } from "nest-keycloak-connect";
-import { ResponseTimeInterceptor } from "../../logger/response-time.interceptor.js";
-import { Ausstattung } from "../entity/ausstattung.entity";
-import { Auto } from "../entity/auto.entity";
-import { Eigentuemer } from "../entity/eigentuemer.entity";
+import { UseGuards, UseFilters, UseInterceptors } from '@nestjs/common';
+import { Resolver, Mutation, Args } from '@nestjs/graphql';
+import { AuthGuard, Roles } from 'nest-keycloak-connect';
+import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
+import { Ausstattung } from '../entity/ausstattung.entity';
+import { Auto } from '../entity/auto.entity';
+import { Eigentuemer } from '../entity/eigentuemer.entity';
 import { AutoDTO } from '../rest/autoDTO.entity.js';
 import { AutoWriteService } from '../service/auto-write.service.js';
 import { HttpExceptionFilter } from './http-exception.filter.js';
 import { getLogger } from '../../logger/logger.js';
-
 
 export interface CreatePayload {
     readonly id: number;
@@ -91,9 +90,7 @@ export class AutoMutationResolver {
         @Args('version') version: string,
         @Args('input') autoUpdateDTO: AutoDTO,
     ) {
-        this.#logger.debug(
-            `update: id=${id} aktuelleVersion=${version}`,
-        );
+        this.#logger.debug(`update: id=${id} aktuelleVersion=${version}`);
         const auto = this.#autoUpdateDtoToAuto(autoUpdateDTO);
         const versionStr = `"${version}"`;
         const versionResult = await this.#service.update({

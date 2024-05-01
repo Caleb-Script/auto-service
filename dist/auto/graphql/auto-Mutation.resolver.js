@@ -12,10 +12,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var _a;
 var AutoMutationResolver_1;
-import { UseGuards, UseFilters, UseInterceptors } from "@nestjs/common";
-import { Resolver, Mutation, Args } from "@nestjs/graphql";
-import { AuthGuard, Roles } from "nest-keycloak-connect";
-import { ResponseTimeInterceptor } from "../../logger/response-time.interceptor.js";
+import { UseGuards, UseFilters, UseInterceptors } from '@nestjs/common';
+import { Resolver, Mutation, Args } from '@nestjs/graphql';
+import { AuthGuard, Roles } from 'nest-keycloak-connect';
+import { ResponseTimeInterceptor } from '../../logger/response-time.interceptor.js';
 import { AutoDTO } from '../rest/autoDTO.entity.js';
 import { AutoWriteService } from '../service/auto-write.service.js';
 import { HttpExceptionFilter } from './http-exception.filter.js';
