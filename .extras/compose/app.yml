@@ -17,7 +17,7 @@
 # N o d e
 # ==============================================================================
 node:
-  port: 3001
+  port: 3000
 
 # ==============================================================================
 # D a t e n b a n k
@@ -46,7 +46,7 @@ db:
 # K e y c l o a k
 # ==============================================================================
 keycloak:
-  authServerUrl: http://localhost:8080
+  authServerUrl: http://keycloak:8080
   realm: acme
   # siehe Keycloak Menuepunkt "Clients" > Tab "Clients list" > Spalte "Client ID"
   clientId: auto-client
