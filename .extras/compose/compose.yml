@@ -62,8 +62,8 @@ services:
         target: /opt/app/dist/config/resources/tls/key.pem
         read_only: true
       - type: bind
-        source: ../../src/config/resources/jwt/private-key.pem
-        target: /opt/app/dist/config/resources/jwt/private-key.pem
+        source: ../../src/config/resources/tls/private-key.pem
+        target: /opt/app/dist/config/resources/tls/private-key.pem
         read_only: true
       - type: bind
         source: ../../src/config/resources/db/sqlite/auto.sqlite
