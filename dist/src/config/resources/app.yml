@@ -44,12 +44,12 @@ db:
 # K e y c l o a k
 # ==============================================================================
 keycloak:
-  authServerUrl: http://localhost:8080
-  realm: acme
+  authServerUrl: http://keycloak:8080
+  #realm: acme
   # siehe Keycloak Menuepunkt "Clients" > Tab "Clients list" > Spalte "Client ID"
-  clientId: auto-client
-  tokenValidation: online
-  secret: HuI4q5h2idiWTjdOGtRYrsvz27SNwli5
+  #clientId: auto-client
+  #tokenValidation: online
+  #secret: YuzPRWRDiH3XDrfC46e0HImN3NZSHHF9
 
 # ==============================================================================
 # L o g g i n g
